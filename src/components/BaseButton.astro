@@ -1,9 +1,13 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const {
     variant = "normal",
     href = null,
     type = "button",
     disabled = false,
+    icon = "",
+    iconRight = false,
 } = Astro.props;
 
 const variantClasses: { [key: string]: string } = {
@@ -14,7 +18,7 @@ const variantClasses: { [key: string]: string } = {
 };
 
 const buttonClasses = `
-  px-4 py-2 rounded-full font-bold duration-150 inline-block 
+  px-4 py-2 rounded-full font-bold duration-150 inline-flex items-center 
   ${variantClasses[variant]} 
   ${disabled ? "opacity-50 cursor-not-allowed" : ""}
 `;
@@ -23,11 +27,15 @@ const buttonClasses = `
 {
     href ? (
         <a href={href} class={buttonClasses}>
+            {icon && !iconRight && <Icon name={icon} class="mr-2" />}
             <slot />
+            {icon && iconRight === "right" && <Icon name={icon} class="ml-2" />}
         </a>
     ) : (
         <button type={type} class={buttonClasses} disabled={disabled}>
+            {icon && !iconRight && <Icon name={icon} class="mr-2" />}
             <slot />
+            {icon && iconRight && <Icon name={icon} class="ml-2" />}
         </button>
     )
 }
