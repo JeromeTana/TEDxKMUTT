@@ -5,10 +5,10 @@ const readCollection = defineCollection({
     schema: z.object({
         title: z.string(),
         pubDate: z.date(),
-        category: z.array(z.string()),
+        categories: z.array(z.string()),
         author: reference("author"),
         thumbnail: z.object({
-            url: z.string(),
+            src: z.string(),
             alt: z.string().optional(),
         }),
     }),
@@ -25,7 +25,7 @@ const watchCollection = defineCollection({
             bio: z.string(),
         }),
         thumbnail: z.object({
-            url: z.string(),
+            src: z.string(),
             alt: z.string().optional(),
         }),
         url: z.string(),
@@ -40,7 +40,7 @@ const eventCollection = defineCollection({
         date: z.date(),
         location: z.string(),
         thumbnail: z.object({
-            url: z.string(),
+            src: z.string(),
             alt: z.string().optional(),
         }),
         url: z.string(),
@@ -51,7 +51,10 @@ const authorCollection = defineCollection({
     type: "data",
     schema: z.object({
         name: z.string(),
-        avatar: z.string(),
+        avatar: z.object({
+            src: z.string(),
+            alt: z.string().optional(),
+        }),
         bio: z.string().optional(),
         social: z
             .object({
