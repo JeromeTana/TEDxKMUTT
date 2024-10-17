@@ -1,5 +1,24 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { getCollection, getEntry } from "astro:content";
+
+const allReadings = await getCollection("read");
+const jeromeTanaProfile = await getEntry("author", "jerome-tana");
 ---
 
-<Layout title="Read · TEDxKMUTT"> <main><h1>Read</h1></main></Layout>
+<Layout title="Read · TEDxKMUTT">
+    <main>
+        <h1>Read</h1>
+        <div>
+            <p>
+                {
+                    allReadings.map((reading) => (
+                        <a href={`/read/${reading.slug}`}>
+                            {reading.data.title}
+                        </a>
+                    ))
+                }
+            </p>
+        </div>
+    </main></Layout
+>
