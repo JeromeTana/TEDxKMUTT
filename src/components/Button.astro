@@ -7,7 +7,7 @@ const {
     type = "button",
     disabled = false,
     icon = "",
-    iconRight = false,
+    isIconRight = false,
 } = Astro.props;
 
 const variantClasses: { [key: string]: string } = {
@@ -27,15 +27,15 @@ const buttonClasses = `
 {
     href ? (
         <a href={href} class={buttonClasses}>
-            {icon && !iconRight && <Icon name={icon} class="mr-2" />}
+            {icon && !isIconRight && <Icon name={icon} class="mr-2" />}
             <slot />
-            {icon && iconRight === "right" && <Icon name={icon} class="ml-2" />}
+            {icon && isIconRight === "right" && <Icon name={icon} class="ml-2" />}
         </a>
     ) : (
         <button type={type} class={buttonClasses} disabled={disabled}>
-            {icon && !iconRight && <Icon name={icon} class="mr-2" />}
+            {icon && !isIconRight && <Icon name={icon} class="mr-2" />}
             <slot />
-            {icon && iconRight && <Icon name={icon} class="ml-2" />}
+            {icon && isIconRight && <Icon name={icon} class="ml-2" />}
         </button>
     )
 }
