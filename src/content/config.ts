@@ -29,6 +29,7 @@ const watchCollection = defineCollection({
             alt: z.string().optional(),
         }),
         url: z.string(),
+        relatedTalks: z.array(reference("watch")).optional(),
     }),
 });
 
