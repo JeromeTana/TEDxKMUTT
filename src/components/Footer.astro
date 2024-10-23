@@ -9,16 +9,16 @@ const t = useTranslations(lang);
 ---
 
 <footer>
-    <div class="px-5 py-12 bg-black text-white lg:px-16 lg:py-20">
+    <div class="px-5 py-12 bg-black text-white leading-8 lg:px-16 lg:py-20">
         <div class="flex flex-col justify-between gap-20 mb-12 md:flex-row">
             <div class="space-y-8">
-                <Image src={W_logo} alt="TEDxKMUTT logo" class="w-80" />
+                <Image src={W_logo} alt="TEDxKMUTT logo" class="w-64" />
                 <p>
                     This independent TEDx event is operated under license from
                     TED.
                 </p>
             </div>
-            <div class="flex flex-col gap-10 md:flex-row">
+            <div class="flex flex-col gap-16 md:flex-row">
                 <div class="space-y-6">
                     <p class="font-bold text-lg">
                         {t("footer.info").toUpperCase()}
@@ -54,17 +54,17 @@ const t = useTranslations(lang);
                         <li>+00 00 000 0000</li>
                         <li>contact@tedxkmutt.com</li>
                         <li class="w-72">{t("footer.contact.location")}</li>
-                        <ul class="flex gap-1 pt-5">
+                        <ul class="flex gap-3 pt-5">
                             <li>
                                 <a
                                     href="https://www.facebook.com/TEDxKMUTT"
                                     target="_blank"
-                                    class="block bg-white p-[2px] rounded-full hover:bg-gray-300 duration-150"
+                                    class="block bg-white p-1 rounded-full hover:bg-gray-300 duration-150"
                                 >
                                     <Icon
                                         name="mdi:facebook"
                                         class="text-primary-500"
-                                        size={24}
+                                        size={48}
                                     />
                                 </a>
                             </li>
@@ -72,12 +72,12 @@ const t = useTranslations(lang);
                                 <a
                                     href="https://www.instagram.com/tedxkmutt_/"
                                     target="_blank"
-                                    class="block bg-white p-[2px] rounded-full hover:bg-gray-300 duration-150"
+                                    class="block bg-white p-1 rounded-full hover:bg-gray-300 duration-150"
                                 >
                                     <Icon
                                         name="mdi:instagram"
                                         class="text-primary-500"
-                                        size={24}
+                                        size={48}
                                     />
                                 </a>
                             </li>
@@ -85,12 +85,12 @@ const t = useTranslations(lang);
                                 <a
                                     href="https://www.youtube.com/@tedxkmuttchannel5359"
                                     target="_blank"
-                                    class="block bg-white p-[2px] rounded-full hover:bg-gray-300 duration-150"
+                                    class="block bg-white p-1 rounded-full hover:bg-gray-300 duration-150"
                                 >
                                     <Icon
                                         name="mdi:youtube"
                                         class="text-primary-500"
-                                        size={24}
+                                        size={48}
                                     />
                                 </a>
                             </li>
