@@ -1,4 +1,6 @@
 ---
+import Navbar from "@/components/Navbar.astro";
+import LanguagePicker from "@/components/LanguagePicker.astro";
 import { getLangFromUrl } from "@/i18n/utils";
 import { fade, ViewTransitions } from "astro:transitions";
 
@@ -22,8 +24,12 @@ const lang = getLangFromUrl(Astro.url);
         <ViewTransitions />
     </head>
     <body transition:animate={fade({ duration: "0.4s" })}>
+        <Navbar />
         <div transition:animate="initial">
             <slot />
         </div>
+        <footer>
+            <LanguagePicker />
+        </footer>
     </body>
 </html>
