@@ -3,6 +3,14 @@ Official website for TEDxKMUTT. We did it by Astro, Tailwind CSS and a bit of lo
 
 ![TEDxKMUTT_cover](https://github.com/user-attachments/assets/c7014f44-49d6-4e85-b5c9-f6ddbd1eec77)
 
+## Icons
+
+We use [mdi](https://pictogrammers.com/library/mdi/) icon set.
+
+```jsx
+<Icon name="mdi:rocket" />
+```
+
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
