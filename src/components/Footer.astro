@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import LanguagePicker from "./LanguagePicker.astro";
 import W_logo from "@/assets/images/logos/TEDxKMUTT_w.png";
 import { Icon } from "astro-icon/components";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
@@ -57,31 +56,43 @@ const t = useTranslations(lang);
                         <li class="w-72">{t("footer.contact.location")}</li>
                         <ul class="flex gap-1 pt-5">
                             <li>
-                                <div class="bg-white p-[2px] rounded-full">
+                                <a
+                                    href="https://www.facebook.com/TEDxKMUTT"
+                                    target="_blank"
+                                    class="block bg-white p-[2px] rounded-full hover:bg-gray-300 duration-150"
+                                >
                                     <Icon
                                         name="mdi:facebook"
                                         class="text-primary-500"
                                         size={24}
                                     />
-                                </div>
+                                </a>
                             </li>
                             <li>
-                                <div class="bg-white p-[2px] rounded-full">
+                                <a
+                                    href="https://www.instagram.com/tedxkmutt_/"
+                                    target="_blank"
+                                    class="block bg-white p-[2px] rounded-full hover:bg-gray-300 duration-150"
+                                >
                                     <Icon
                                         name="mdi:instagram"
                                         class="text-primary-500"
                                         size={24}
                                     />
-                                </div>
+                                </a>
                             </li>
                             <li>
-                                <div class="bg-white p-[2px] rounded-full">
+                                <a
+                                    href="https://www.youtube.com/@tedxkmuttchannel5359"
+                                    target="_blank"
+                                    class="block bg-white p-[2px] rounded-full hover:bg-gray-300 duration-150"
+                                >
                                     <Icon
                                         name="mdi:youtube"
                                         class="text-primary-500"
                                         size={24}
                                     />
-                                </div>
+                                </a>
                             </li>
                         </ul>
                     </ul>
@@ -103,6 +114,5 @@ const t = useTranslations(lang);
                 </p>
             </div>
         </div>
-        <LanguagePicker />
     </div>
 </footer>
