@@ -1,4 +1,5 @@
 ---
+import Layout from "@/layouts/Layout.astro";
 import { getEntry } from "astro:content";
 
 const { slug } = Astro.params;
@@ -14,10 +15,10 @@ if (entry === undefined) {
 
 const author = await getEntry(entry.data.author);
 
-const { Content, headings } = await entry.render();
----
+const { Content } = await entry.render();
 
-<p>Published on: {entry.data.pubDate.toDateString()}</p>
+---
+<Layout title="Read · TEDxKMUTT">
 <Content />
 {
     author && (
@@ -25,3 +26,4 @@ const { Content, headings } = await entry.render();
         <img src={author.data.avatar.src} alt={author.data.avatar.alt}>
     )
 }
+</Layout>
