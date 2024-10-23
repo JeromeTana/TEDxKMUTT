@@ -1,14 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 
-const allReadings = await getCollection("read", ({ id }) =>
-    id.startsWith(lang)
-);
-const jeromeTanaProfile = await getEntry("author", `${lang}/jerome-tana`);
+const allReadings = await getCollection("read");
 ---
 
 <Layout title="Read · TEDxKMUTT">

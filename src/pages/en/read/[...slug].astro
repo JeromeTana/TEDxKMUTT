@@ -1,9 +1,8 @@
 ---
-import { getLangFromUrl } from "@/i18n/utils";
+import Layout from "@/layouts/Layout.astro";
 import { getEntry } from "astro:content";
 
 const { slug } = Astro.params;
-const lang = getLangFromUrl(Astro.url);
 
 if (slug === undefined) {
     throw new Error("Slug is required");
@@ -18,10 +17,8 @@ const author = await getEntry(entry.data.author);
 
 const { Content, headings } = await entry.render();
 
-const formattedDate = entry.data.pubDate.toLocaleString(lang);
 ---
-
-<p>Published on: {formattedDate}</p>
+<Layout title="Read · TEDxKMUTT">
 <Content />
 {
     author && (
@@ -29,3 +26,4 @@ const formattedDate = entry.data.pubDate.toLocaleString(lang);
         <img src={author.data.avatar.src} alt={author.data.avatar.alt}>
     )
 }
+</Layout>
