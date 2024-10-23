@@ -15,6 +15,9 @@ export const ui: UI = {
     en: {
         "nav.home": "Home",
         "nav.about": "About",
+        "nav.events": "Events",
+        "nav.watch": "Watch",
+        "nav.read": "Read",
         "nav.twitter": "Twitter",
         "footer.info": "Information",
         "footer.contact": "Contact",
@@ -27,6 +30,9 @@ export const ui: UI = {
     th: {
         "nav.home": "หน้าหลัก",
         "nav.about": "เกี่ยวกับเรา",
+        "nav.events": "กิจกรรมต่าง ๆ",
+        "nav.watch": "ดูวิดีโอ",
+        "nav.read": "อ่านบทความ",
         "footer.info": "ข้อมูลต่าง ๆ",
         "footer.contact": "ติดต่อเรา",
         "footer.contact.location":

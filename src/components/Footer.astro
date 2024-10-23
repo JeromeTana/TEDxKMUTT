@@ -25,10 +25,26 @@ const t = useTranslations(lang);
                         {t("footer.info").toUpperCase()}
                     </p>
                     <ul class="space-y-4">
-                        <li>Events</li>
-                        <li>About us</li>
-                        <li>Watch</li>
-                        <li>Read</li>
+                        <li>
+                            <a href={`/${lang}/events/`}>
+                                {t("nav.events")}
+                            </a>
+                        </li>
+                        <li>
+                            <a href={`/${lang}/about/`}>
+                                {t("nav.about")}
+                            </a>
+                        </li>
+                        <li>
+                            <a href={`/${lang}/watch/`}>
+                                {t("nav.watch")}
+                            </a>
+                        </li>
+                        <li>
+                            <a href={`/${lang}/read/`}>
+                                {t("nav.read")}
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="space-y-6">
