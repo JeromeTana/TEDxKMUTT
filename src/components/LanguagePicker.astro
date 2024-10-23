@@ -1,14 +1,20 @@
 ---
 import { languages } from "@/i18n/ui";
+import { getLangFromUrl } from "@/i18n/utils";
 
-const path = Astro.url.pathname.split("/")[2];
+const lang = getLangFromUrl(Astro.url);
+const pathWithoutLang = Astro.url.pathname.slice(lang.length + 2); // +2 to account for the leading "/"
+
+const replacePath = (newLang) => {
+    return `/${newLang}/${pathWithoutLang}`;
+};
 ---
 
 <ul>
     {
-        Object.entries(languages).map(([lang, label]) => (
+        Object.entries(languages).map(([langCode, label]) => (
             <li>
-                <a href={`/${lang}/${path}`}>{label}</a>
+                <a href={replacePath(langCode)}>{label}</a>
             </li>
         ))
     }
