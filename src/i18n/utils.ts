@@ -1,8 +1,8 @@
 import { ui, defaultLang, type UI } from "./ui";
 
-export function getLangFromUrl(url: URL) {
+export function getLangFromUrl(url: URL): string {
     const [, lang] = url.pathname.split("/");
-    if (lang in ui) return lang as keyof typeof ui;
+    if (lang in ui) return lang as string;
     return defaultLang;
 }
 
