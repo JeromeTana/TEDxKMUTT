@@ -1,3 +1,9 @@
+export interface UI {
+    [key: string]: {
+        [key: string]: string;
+    };
+}
+
 export const languages = {
     en: "English",
     th: "ไทย",
@@ -5,7 +11,7 @@ export const languages = {
 
 export const defaultLang = "en";
 
-export const ui = {
+export const ui: UI = {
     en: {
         "nav.home": "Home",
         "nav.about": "About",

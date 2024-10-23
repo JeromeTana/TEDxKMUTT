@@ -1,6 +1,6 @@
 import type { MiddlewareHandler } from "astro";
 
-const onRequest: MiddlewareHandler = (context, next) => {
+export const onRequest: MiddlewareHandler = (context, next) => {
     if (
         !context.url.pathname.startsWith("/en") &&
         !context.url.pathname.startsWith("/th")
@@ -10,5 +10,3 @@ const onRequest: MiddlewareHandler = (context, next) => {
 
     return next();
 };
-
-export default onRequest;

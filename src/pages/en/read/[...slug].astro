@@ -15,7 +15,7 @@ if (entry === undefined) {
 
 const author = await getEntry(entry.data.author);
 
-const { Content, headings } = await entry.render();
+const { Content } = await entry.render();
 
 ---
 <Layout title="Read · TEDxKMUTT">
