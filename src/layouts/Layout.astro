@@ -1,8 +1,8 @@
 ---
 import Navbar from "@/components/Navbar.astro";
-import LanguagePicker from "@/components/LanguagePicker.astro";
 import { getLangFromUrl } from "@/i18n/utils";
 import { fade, ViewTransitions } from "astro:transitions";
+import Footer from "@/components/Footer.astro";
 
 interface Props {
     title: string;
@@ -28,8 +28,6 @@ const lang = getLangFromUrl(Astro.url);
         <div transition:animate="initial">
             <slot />
         </div>
-        <footer>
-            <LanguagePicker />
-        </footer>
+        <Footer />
     </body>
 </html>
