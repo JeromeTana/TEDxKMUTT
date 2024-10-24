@@ -1,5 +1,17 @@
 ---
+import Banner from "@/components/Banner";
 import Layout from "@/layouts/Layout.astro";
+import cover from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
 ---
 
-<Layout title="About · TEDxKMUTT"> <main><h1>About</h1></main></Layout>
+<Layout title="About · TEDxKMUTT">
+    <main>
+        <Banner
+            tag="About us"
+            title="Ideas Worth Spreading at KMUTT"
+            description="TEDxKMUTT brings innovative ideas to our campus. We inspire and provoke thought, fostering creativity among students, faculty, and the wider community."
+            cover={cover}
+        />
+        <h1 class="text-red-500">About us</h1>
+    </main></Layout
+>

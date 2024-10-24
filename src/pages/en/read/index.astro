@@ -2,6 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
+import Banner from "@/components/Banner";
+import cover from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
 
 const lang = getLangFromUrl(Astro.url);
 
@@ -10,6 +12,12 @@ const allReadings = await getCollection("read");
 
 <Layout title="Read · TEDxKMUTT">
     <main>
+        <Banner
+            tag="Read our articles"
+            title="Beyond the Stage"
+            description="Delve deeper into TEDxKMUTT talks with expert analyses, speaker interviews, and explorations of how these ideas are shaping our future"
+            cover={cover}
+        />
         <h1>Read</h1>
         <div>
             <p>
