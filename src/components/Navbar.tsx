@@ -19,7 +19,7 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
 
     return (
         <nav className="bg-black">
-            <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-8 py-5">
+            <div className="max-w-screen-2xl flex flex-wrap items-center justify-between p-3 mx-auto md:px-8 md:py-5">
                 <a
                     href="#"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
