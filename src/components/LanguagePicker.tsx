@@ -15,7 +15,7 @@ const LanguagePicker = ({ lang, path }: { lang: string; path: string }) => {
                     <li key={langCode}>
                         <a
                             href={replacePath(langCode)}
-                            className="inline-flex gap-1 hover:text-primary-500 duration-150"
+                            className="flex items-center gap-1 hover:text-primary-500 duration-150"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
