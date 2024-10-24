@@ -22,16 +22,20 @@ const allReadings = await getCollection("read");
         />
         <h1>Read</h1>
 
-        <!-- Test BlogItem -->
-        <div>
-            <BlogItem />
-        </div>
         <div>
             <p>
                 {
                     allReadings.map((reading) => (
                         <a href={`/${lang}/read/${reading.slug}`}>
                             {reading.data.title}
+                            <BlogItem
+                                thumbnail={reading.data.thumbnail}
+                                title={reading.data.title}
+                                categories={reading.data.categories}
+                                content={reading.body}
+                                author={reading.data.author}
+                                pubDate={reading.data.pubDate}
+                            />
                         </a>
                     ))
                 }
