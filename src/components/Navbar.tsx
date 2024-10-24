@@ -112,7 +112,7 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
                                 href={`/${lang}/watch`}
                                 className="block py-2 px-3 text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-primary-500 md:p-0 duration-150"
                             >
-                                {t("nav.watch")} 55
+                                {t("nav.watch")}
                             </a>
                         </li>
                         <li className="w-full text-center md:w-auto md:text-start">
