@@ -44,3 +44,5 @@ const BlogItem: React.FC<Props> = ({ thumbnail, categories, title, content, auth
         </div>
     )
 }
+
+export default BlogItem;

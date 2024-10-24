@@ -3,7 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
 import Banner from "@/components/Banner";
+import BlogItem from "@/components/BlogItem";
 import cover from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
+
 
 const lang = getLangFromUrl(Astro.url);
 
@@ -19,6 +21,11 @@ const allReadings = await getCollection("read");
             cover={cover}
         />
         <h1>Read</h1>
+
+        <!-- Test BlogItem -->
+        <div>
+            <BlogItem />
+        </div>
         <div>
             <p>
                 {
