@@ -2,14 +2,13 @@ import React from "react";
 
 interface Props {
     thumbnail: ImageMetadata;
-    categories: string[];
     title: string;
     content: string;
     author: string;
     pubDate: string;
 }
 
-const BlogItem: React.FC<Props> = ({ thumbnail, categories, title, content, author, pubDate }) => {
+const BlogItem: React.FC<Props> = ({ thumbnail, title, content, author, pubDate }) => {
     return (
         <div className="">
             <div className="relative rounded-2xl overflow-hidden">
@@ -22,11 +21,6 @@ const BlogItem: React.FC<Props> = ({ thumbnail, categories, title, content, auth
             </div>
             <div className="p-4 space-y-4">
                 <div className="flex space-x-2">
-                    {categories.map((category) => (
-                        <span key={category} className="px-2 py-1 bg-primary-500 text-white rounded-full text-xs">
-                            {category}
-                        </span>
-                    ))}
                 </div>
                 <h1 className="font-bold text-2xl text-gray-800">{title}</h1>
                 <p className="text-gray-600">{content}</p>
