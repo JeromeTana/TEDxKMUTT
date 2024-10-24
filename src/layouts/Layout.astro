@@ -1,5 +1,5 @@
 ---
-import Navbar from "@/components/Navbar.astro";
+import Navbar from "@/components/Navbar";
 import { getLangFromUrl } from "@/i18n/utils";
 import { fade, ViewTransitions } from "astro:transitions";
 import Footer from "@/components/Footer.astro";
@@ -9,7 +9,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const lang = getLangFromUrl(Astro.url);
+const url = Astro.url;
+const lang = getLangFromUrl(url);
 ---
 
 <!doctype html>
@@ -24,7 +25,7 @@ const lang = getLangFromUrl(Astro.url);
         <ViewTransitions />
     </head>
     <body transition:animate={fade({ duration: "0.4s" })}>
-        <Navbar />
+        <Navbar url={url} client:load />
         <div transition:animate="initial">
             <slot />
         </div>
