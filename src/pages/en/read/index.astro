@@ -16,6 +16,19 @@ const truncate = (text: string, maxLength: number) => {
   return text;
 };
 
+function extractContent(text: string) {
+  if (typeof text !== 'string') return '';
+
+  const lines = text.split('\n');
+  let title = '';
+  if (lines[0] && lines[0].startsWith('#')) {
+    title = lines.shift()?.replace('#', '').trim() || '';
+  }
+  const content = lines.join(' ');
+
+  return title ? `${title}: ${content}` : content;
+}
+
 const allAuthors = await getCollection('author');
 const authorMap = Object.fromEntries(allAuthors.map(author => [author.id, author.data]));
 ---
@@ -33,6 +46,7 @@ const authorMap = Object.fromEntries(allAuthors.map(author => [author.id, author
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {allReadings.map((reading) => {
                 const author = authorMap[reading.data.author.id];
+                const content = extractContent(reading.body);
                 return (
                     <a href={`/${lang}/read/${reading.slug}`}>
                         <BlogItem 
@@ -40,7 +54,7 @@ const authorMap = Object.fromEntries(allAuthors.map(author => [author.id, author
                             thumbnail={reading.data.thumbnail}
                             title={reading.data.title}
                             categories={reading.data.categories}
-                            content={truncate(reading.body, 200)}
+                            content={truncate(content, 50)}
                             author={author.name}
                             authorAvatar={author.avatar.src}
                             pubDate={new Date(reading.data.pubDate).toLocaleDateString()}
