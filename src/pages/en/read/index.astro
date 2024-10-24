@@ -10,28 +10,31 @@ const lang = getLangFromUrl(Astro.url);
 const allReadings = await getCollection("read");
 
 const truncate = (text: string, maxLength: number) => {
-  if (text.length > maxLength) {
-    return text.substring(0, maxLength) + '...';
-  }
-  return text;
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + "...";
+    }
+    return text;
 };
 
 function extractContent(text: string) {
-  if (typeof text !== 'string') return '';
+    if (typeof text !== "string") return "";
 
-  const lines = text.split('\n');
-  let title = '';
-  if (lines[0] && lines[0].startsWith('#')) {
-    title = lines.shift()?.replace('#', '').trim() || '';
-  }
-  const content = lines.join(' ');
+    const lines = text.split("\n");
+    let title = "";
+    if (lines[0] && lines[0].startsWith("#")) {
+        title = lines.shift()?.replace("#", "").trim() || "";
+    }
+    const content = lines.join(" ");
 
-  return title ? `${title}: ${content}` : content;
+    return title ? `${title}: ${content}` : content;
 }
 
-const allAuthors = await getCollection('author');
-const authorMap = Object.fromEntries(allAuthors.map(author => [author.id, author.data]));
+const allAuthors = await getCollection("author");
+const authorMap = Object.fromEntries(
+    allAuthors.map((author) => [author.id, author.data]),
+);
 ---
+
 <Layout title="Read · TEDxKMUTT">
     <main>
         <Banner
@@ -40,28 +43,31 @@ const authorMap = Object.fromEntries(allAuthors.map(author => [author.id, author
             description="Delve deeper into TEDxKMUTT talks with expert analyses, speaker interviews, and explorations of how these ideas are shaping our future"
             cover={cover}
         />
-        <div class="container mx-auto px-8">
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {allReadings.map((reading) => {
-                const author = authorMap[reading.data.author.id];
-                const content = extractContent(reading.body);
-                return (
-                    <a href={`/${lang}/read/${reading.slug}`}>
-                        <BlogItem 
-                            key={reading.slug}
-                            thumbnail={reading.data.thumbnail}
-                            title={reading.data.title}
-                            categories={reading.data.categories}
-                            content={truncate(content, 50)}
-                            author={author.name}
-                            authorAvatar={author.avatar.src}
-                            pubDate={new Date(reading.data.pubDate).toLocaleDateString()}
-                        />
-                    </a>
-                );
-            })}
+        <div class="container mx-auto px-24 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {
+                    allReadings.map((reading) => {
+                        const author = authorMap[reading.data.author.id];
+                        const content = extractContent(reading.body);
+                        return (
+                            <a href={`/${lang}/read/${reading.slug}`}>
+                                <BlogItem
+                                    key={reading.slug}
+                                    thumbnail={reading.data.thumbnail}
+                                    title={reading.data.title}
+                                    categories={reading.data.categories}
+                                    content={truncate(content, 50)}
+                                    author={author.name}
+                                    authorAvatar={author.avatar.src}
+                                    pubDate={new Date(
+                                        reading.data.pubDate,
+                                    ).toLocaleDateString()}
+                                />
+                            </a>
+                        );
+                    })
+                }
+            </div>
         </div>
-    </div>
     </main>
 </Layout>

@@ -21,7 +21,7 @@ const BlogItem: React.FC<Props> = ({ thumbnail, categories, title, content, auth
         <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
       <div className="flex justify-between items-center mt-2">
-        <span className="bg-red-600 text-white px-2 py-1 rounded-full text-xs">{categories.join(', ')}</span>
+        <span className="bg-[#46000C] text-red-600 px-2 py-1 rounded-full text-xs">{categories.join(', ')}</span>
       </div>
       <h2 className="text-xl font-bold">{title}</h2>
       <p className="text-gray-400">{content}</p>
