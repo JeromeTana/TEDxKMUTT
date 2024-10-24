@@ -24,7 +24,10 @@ const path = Astro.url.pathname;
         <title>{title}</title>
         <ViewTransitions />
     </head>
-    <body transition:animate={fade({ duration: "0.4s" })}>
+    <body
+        transition:animate={fade({ duration: "0.4s" })}
+        class="bg-black text-white"
+    >
         <Navbar lang={lang} path={path} client:load />
         <div transition:animate="initial">
             <slot />
