@@ -2,13 +2,14 @@ import React from "react";
 
 interface Props {
     thumbnail: ImageMetadata;
+    categories: string[];
     title: string;
     content: string;
     author: string;
     pubDate: string;
 }
 
-const BlogItem: React.FC<Props> = ({ thumbnail, title, content, author, pubDate }) => {
+const BlogItem: React.FC<Props> = ({ thumbnail, categories, title, content, author, pubDate }) => {
     return (
         <div className="">
             <div className="relative rounded-2xl overflow-hidden">
