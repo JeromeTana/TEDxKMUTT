@@ -15,9 +15,9 @@ interface Props {
 
 const BlogItem: React.FC<Props> = ({ thumbnail, categories, title, content, author, authorAvatar, pubDate }) => {
   return (
-    <div className="text-white p-4 rounded-lg space-y-4">
+    <div className="text-white p-4 rounded-lg space-y-3">
       <div className="relative rounded-2xl overflow-hidden">
-        <img src={thumbnail.src} alt={thumbnail.alt} className="h-52 w-auto object-cover" />
+        <img src={thumbnail.src} alt={thumbnail.alt} className="w-full h-52 object-cover" />
         <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
       <div className="flex items-center">
