@@ -20,7 +20,7 @@ const Navbar = ({ url }: { url: URL }) => {
 
     return (
         <nav className="bg-black sticky top-0 z-50">
-            <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-8 py-5">
+            <div className="max-w-screen-2xl flex flex-wrap items-center justify-between p-3 mx-auto md:px-8 md:py-5">
                 <a
                     href={`/${lang}`}
                     className="flex items-center space-x-3 rtl:space-x-reverse"

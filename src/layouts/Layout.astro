@@ -24,7 +24,11 @@ const lang = getLangFromUrl(url);
         <title>{title}</title>
         <ViewTransitions />
     </head>
-    <body transition:animate={fade({ duration: "0.4s" })}>
+
+    <body
+        transition:animate={fade({ duration: "0.4s" })}
+        class="bg-black text-white"
+    >
         <Navbar url={url} client:load />
         <div transition:animate="initial">
             <slot />
