@@ -9,8 +9,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const lang = getLangFromUrl(Astro.url);
 const url = Astro.url;
+const lang = getLangFromUrl(url);
 ---
 
 <!doctype html>
