@@ -1,11 +1,12 @@
-import { useTranslations } from "@/i18n/utils";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import { useState } from "react";
 import LanguagePicker from "./LanguagePicker";
 import logo from "@//assets/images/logos/TEDxKMUTT_w.png";
 
-const Navbar = ({ lang, path }: { lang: string; path: string }) => {
+const Navbar = ({ url }: { url: URL }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+    const lang = getLangFromUrl(url);
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -18,10 +19,10 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
     const t = useTranslations(lang);
 
     return (
-        <nav className="bg-black">
+        <nav className="bg-black sticky top-0 z-50">
             <div className="max-w-screen-2xl flex flex-wrap items-center justify-between p-3 mx-auto md:px-8 md:py-5">
                 <a
-                    href="#"
+                    href={`/${lang}`}
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
                     <img src={logo.src} className="w-40" alt="TEDxKMUTT logo" />
@@ -124,7 +125,7 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
                             </a>
                         </li>
                         <li className="w-full text-center md:w-auto md:text-start">
-                            <LanguagePicker lang={lang} path={path} />
+                            <LanguagePicker url={url} />
                         </li>
                     </ul>
                 </div>
