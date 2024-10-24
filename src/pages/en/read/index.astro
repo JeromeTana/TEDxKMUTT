@@ -20,13 +20,12 @@ function extractContent(text: string) {
     if (typeof text !== "string") return "";
 
     const lines = text.split("\n");
-    let title = "";
     if (lines[0] && lines[0].startsWith("#")) {
-        title = lines.shift()?.replace("#", "").trim() || "";
+        lines.shift()?.replace("#", "").trim() || "";
     }
     const content = lines.join(" ");
 
-    return title ? `${title}: ${content}` : content;
+    return content;
 }
 
 const allAuthors = await getCollection("author");
@@ -44,7 +43,7 @@ const authorMap = Object.fromEntries(
             cover={cover}
         />
         <div class="container mx-auto px-24 md:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 ">
                 {
                     allReadings.map((reading) => {
                         const author = authorMap[reading.data.author.id];
@@ -56,7 +55,7 @@ const authorMap = Object.fromEntries(
                                     thumbnail={reading.data.thumbnail}
                                     title={reading.data.title}
                                     categories={reading.data.categories}
-                                    content={truncate(content, 100)}
+                                    content={truncate(content, 80)}
                                     author={author.name}
                                     authorAvatar={author.avatar.src}
                                     pubDate={new Date(
