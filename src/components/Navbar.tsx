@@ -18,7 +18,7 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
     const t = useTranslations(lang);
 
     return (
-        <nav className="bg-black">
+        <nav className="bg-black sticky top-0">
             <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-8 py-5">
                 <a
                     href="#"
