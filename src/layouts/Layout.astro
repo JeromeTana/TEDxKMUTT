@@ -10,7 +10,7 @@ interface Props {
 
 const { title } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const path = Astro.url.pathname;
+const url = Astro.url;
 ---
 
 <!doctype html>
@@ -25,7 +25,7 @@ const path = Astro.url.pathname;
         <ViewTransitions />
     </head>
     <body transition:animate={fade({ duration: "0.4s" })}>
-        <Navbar lang={lang} path={path} client:load />
+        <Navbar url={url} client:load />
         <div transition:animate="initial">
             <slot />
         </div>

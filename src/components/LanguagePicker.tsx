@@ -1,7 +1,9 @@
 import { languages } from "@/i18n/ui";
+import { getLangFromUrl } from "@/i18n/utils";
 
-const LanguagePicker = ({ lang, path }: { lang: string; path: string }) => {
-    const pathWithoutLang = path.slice(lang.length + 2); // +2 to account for the leading "/"
+const LanguagePicker = ({ url }: { url: URL }) => {
+    const lang = getLangFromUrl(url);
+    const pathWithoutLang = url.pathname.slice(lang.length + 2); // +2 to account for the leading "/"
 
     const replacePath = (newLang: string) => {
         return `/${newLang}/${pathWithoutLang}`;
