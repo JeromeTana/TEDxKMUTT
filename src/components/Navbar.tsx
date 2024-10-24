@@ -23,7 +23,11 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
                     href="#"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
-                    <img src="" className="h-8" alt="TEDxKMUTT logo" />
+                    <img
+                        src="../assets/images/logos/TEDxKMUTT_w.png"
+                        className="h-8"
+                        alt="TEDxKMUTT logo"
+                    />
                 </a>
                 <button
                     onClick={toggleNavbar}
@@ -94,21 +98,13 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
                                                 Man in the Mirror
                                             </a>
                                         </li>
-                                        <li>
-                                            <a
-                                                href="#"
-                                                className="block px-4 py-2 ml-3 rounded-md bg-gray-800 duration-150 hover:bg-gray-700 md:ml-0"
-                                            >
-                                                Man in the Mirror
-                                            </a>
-                                        </li>
                                     </ul>
                                 </div>
                             )}
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href={`/${lang}/about`}
                                 className="block py-2 px-3 text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-primary-500 md:p-0 duration-150"
                             >
                                 {t("nav.about")}
@@ -116,7 +112,7 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href={`/${lang}/watch`}
                                 className="block py-2 px-3 text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-primary-500 md:p-0 duration-150"
                             >
                                 {t("nav.watch")}
@@ -124,7 +120,7 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href={`/${lang}/read`}
                                 className="block py-2 px-3 text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-primary-500 md:p-0 duration-150"
                             >
                                 {t("nav.read")}
