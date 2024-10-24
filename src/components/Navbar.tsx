@@ -55,11 +55,11 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
                     id="navbar-dropdown"
                 >
                     <ul className="flex flex-col items-center absolute right-3 w-44  font-medium text-white p-2 md:p-0 mt-4 border border-gray-800 rounded-lg bg-black md:space-x-8 rtl:space-x-reverse md:w-auto md:flex-row md:mt-0 md:border-0 md:right-0 md:relative">
-                        <li>
+                        <li className="w-full text-center md:w-auto md:text-justify">
                             <button
                                 onMouseEnter={toggleDropdown}
                                 onClick={toggleDropdown}
-                                className="flex items-center justify-between w-full py-2 px-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-primary-500 md:p-0 duration-150 hover:bg-gray-900 rounded-lg"
+                                className="flex items-center justify-center w-full py-2 px-3 text-white md:hover:bg-transparent md:border-0 md:hover:text-primary-500 md:p-0 duration-150 hover:bg-gray-900 rounded-lg"
                             >
                                 {t("nav.events")}
                                 <svg
@@ -90,7 +90,7 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
                                         <li>
                                             <a
                                                 href="#"
-                                                className="block px-4 py-2 ml-3 rounded-md bg-gray-800 duration-150 hover:bg-gray-700 md:ml-0"
+                                                className="block px-4 py-2 rounded-md bg-gray-800 duration-150 hover:bg-gray-700"
                                             >
                                                 Man in the Mirror
                                             </a>
@@ -99,7 +99,7 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
                                 </div>
                             )}
                         </li>
-                        <li>
+                        <li className="w-full text-center md:w-auto md:text-start">
                             <a
                                 href={`/${lang}/about`}
                                 className="block py-2 px-3 text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-primary-500 md:p-0 duration-150"
@@ -107,15 +107,15 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
                                 {t("nav.about")}
                             </a>
                         </li>
-                        <li>
+                        <li className="w-full text-center md:w-auto md:text-start">
                             <a
                                 href={`/${lang}/watch`}
                                 className="block py-2 px-3 text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-primary-500 md:p-0 duration-150"
                             >
-                                {t("nav.watch")}
+                                {t("nav.watch")} 55
                             </a>
                         </li>
-                        <li>
+                        <li className="w-full text-center md:w-auto md:text-start">
                             <a
                                 href={`/${lang}/read`}
                                 className="block py-2 px-3 text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-primary-500 md:p-0 duration-150"
@@ -123,7 +123,7 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
                                 {t("nav.read")}
                             </a>
                         </li>
-                        <li>
+                        <li className="w-full text-center md:w-auto md:text-start">
                             <LanguagePicker lang={lang} path={path} />
                         </li>
                     </ul>
