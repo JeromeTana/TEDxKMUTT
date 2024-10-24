@@ -15,6 +15,9 @@ const truncate = (text: string, maxLength: number) => {
   }
   return text;
 };
+
+const allAuthors = await getCollection('author');
+const authorMap = Object.fromEntries(allAuthors.map(author => [author.id, author.data]));
 ---
 <Layout title="Read · TEDxKMUTT">
     <main>
@@ -25,20 +28,27 @@ const truncate = (text: string, maxLength: number) => {
             cover={cover}
         />
         <h1>Read</h1>
-        <div>
-            {allReadings.map((reading) => (
-                <a href={`/${lang}/read/${reading.slug}`}>
-                    <BlogItem 
-                        key={reading.slug}
-                        thumbnail={reading.data.thumbnail}
-                        title={reading.data.title}
-                        categories={reading.data.categories}
-                        content={truncate(reading.body, 200)}
-                        author={reading.data.author.id}
-                        pubDate={new Date(reading.data.pubDate).toLocaleDateString()}
-                    />
-                </a>
-            ))}
+        <div class="container">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {allReadings.map((reading) => {
+                const author = authorMap[reading.data.author.id];
+                return (
+                    <a href={`/${lang}/read/${reading.slug}`}>
+                        <BlogItem 
+                            key={reading.slug}
+                            thumbnail={reading.data.thumbnail}
+                            title={reading.data.title}
+                            categories={reading.data.categories}
+                            content={truncate(reading.body, 200)}
+                            author={author.name}
+                            authorAvatar={author.avatar.src}
+                            pubDate={new Date(reading.data.pubDate).toLocaleDateString()}
+                        />
+                    </a>
+                );
+            })}
         </div>
+    </div>
     </main>
 </Layout>
