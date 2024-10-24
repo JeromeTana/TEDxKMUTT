@@ -8,8 +8,14 @@ import cover from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
 
 
 const lang = getLangFromUrl(Astro.url);
-
 const allReadings = await getCollection("read");
+
+const truncate = (text: string, maxLength: number) => {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + '...';
+  }
+  return text;
+};
 ---
 
 <Layout title="Read · TEDxKMUTT">
@@ -26,13 +32,15 @@ const allReadings = await getCollection("read");
             <p>
                 {
                     allReadings.map((reading) => (
+                        
                         <a href={`/${lang}/read/${reading.slug}`}>
-                            {reading.data.title}
+
                             <BlogItem
+                                key={reading.slug}
                                 thumbnail={reading.data.thumbnail}
                                 title={reading.data.title}
                                 categories={reading.data.categories}
-                                content={reading.body}
+                                content={truncate(reading.body, 200)}
                                 author={reading.data.author}
                                 pubDate={reading.data.pubDate}
                             />
