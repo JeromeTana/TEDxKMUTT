@@ -1,6 +1,7 @@
 import { useTranslations } from "@/i18n/utils";
 import { useState } from "react";
 import LanguagePicker from "./LanguagePicker";
+import logo from "@//assets/images/logos/TEDxKMUTT_w.png";
 
 const Navbar = ({ lang, path }: { lang: string; path: string }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -18,16 +19,12 @@ const Navbar = ({ lang, path }: { lang: string; path: string }) => {
 
     return (
         <nav className="bg-black">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-8 py-5">
                 <a
                     href="#"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
-                    <img
-                        src="../assets/images/logos/TEDxKMUTT_w.png"
-                        className="h-8"
-                        alt="TEDxKMUTT logo"
-                    />
+                    <img src={logo.src} className="w-40" alt="TEDxKMUTT logo" />
                 </a>
                 <button
                     onClick={toggleNavbar}
