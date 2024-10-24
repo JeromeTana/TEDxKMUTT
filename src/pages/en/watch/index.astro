@@ -1,9 +1,17 @@
 ---
+import Banner from "@/components/Banner";
 import Layout from "@/layouts/Layout.astro";
+import cover from "@/assets/images/backgrounds/KMUTT_LX_Building.png";
 ---
 
 <Layout title="Watch · TEDxKMUTT">
     <main>
+        <Banner
+            tag="Watch our talks"
+            title="Ideas That Resonate"
+            description="Watch standout presentations from KMUTT researchers, alumni, and invited experts that exemplify our commitment to advancing knowledge and technology"
+            cover={cover}
+        />
         <h1 class="text-red-500">Watch</h1>
     </main>
 </Layout>
