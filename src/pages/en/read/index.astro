@@ -6,7 +6,6 @@ import Banner from "@/components/Banner";
 import BlogItem from "@/components/BlogItem";
 import cover from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
 
-
 const lang = getLangFromUrl(Astro.url);
 const allReadings = await getCollection("read");
 
@@ -17,7 +16,6 @@ const truncate = (text: string, maxLength: number) => {
   return text;
 };
 ---
-
 <Layout title="Read · TEDxKMUTT">
     <main>
         <Banner
@@ -27,27 +25,20 @@ const truncate = (text: string, maxLength: number) => {
             cover={cover}
         />
         <h1>Read</h1>
-
         <div>
-            <p>
-                {
-                    allReadings.map((reading) => (
-                        
-                        <a href={`/${lang}/read/${reading.slug}`}>
-
-                            <BlogItem
-                                
-                                thumbnail={reading.data.thumbnail}
-                                title={reading.data.title}
-                                categories={reading.data.categories}
-                                content={truncate(reading.body, 200)}
-                                author={reading.data.author}
-                                pubDate={reading.data.pubDate}
-                            />
-                        </a>
-                    ))
-                }
-            </p>
+            {allReadings.map((reading) => (
+                <a href={`/${lang}/read/${reading.slug}`}>
+                    <BlogItem 
+                        key={reading.slug}
+                        thumbnail={reading.data.thumbnail}
+                        title={reading.data.title}
+                        categories={reading.data.categories}
+                        content={truncate(reading.body, 200)}
+                        author={reading.data.author.id}
+                        pubDate={new Date(reading.data.pubDate).toLocaleDateString()}
+                    />
+                </a>
+            ))}
         </div>
-    </main></Layout
->
+    </main>
+</Layout>
