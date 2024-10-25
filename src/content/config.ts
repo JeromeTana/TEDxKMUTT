@@ -16,21 +16,22 @@ const readCollection = defineCollection({
 
 const watchCollection = defineCollection({
     type: "data",
-    schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        event: reference("event"),
-        speaker: z.object({
-            name: z.string(),
-            bio: z.string(),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            description: z.string(),
+            event: reference("event"),
+            speaker: z.object({
+                name: z.string(),
+                bio: z.string(),
+            }),
+            thumbnail: z.object({
+                src: image(),
+                alt: z.string().optional(),
+            }),
+            url: z.string(),
+            relatedTalks: z.array(reference("watch")).optional(),
         }),
-        thumbnail: z.object({
-            src: z.string(),
-            alt: z.string().optional(),
-        }),
-        url: z.string(),
-        relatedTalks: z.array(reference("watch")).optional(),
-    }),
 });
 
 const eventCollection = defineCollection({
