@@ -2,6 +2,10 @@
 import Banner from "@/components/Banner";
 import Layout from "@/layouts/Layout.astro";
 import cover from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
+import { getCollection } from "astro:content";
+import TalkCard from "@/components/TalkCard.astro";
+
+const allWatching = await getCollection("watch");
 ---
 
 <Layout title="Watch · TEDxKMUTT">
@@ -13,5 +17,16 @@ import cover from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
             cover={cover}
         />
         <h1 class="text-red-500">Watch</h1>
+        <div class="max-w-screen-lg m-auto">
+            <div class="grid grid-cols-3 gap-4">
+                {
+                    allWatching.map((watch) => (
+                        <a href={`/en/watch/${watch.id}`}>
+                            <TalkCard talk={watch.data} />
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
     </main>
 </Layout>
