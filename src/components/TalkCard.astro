@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import Button from "./Button.astro";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { Image } from "astro:assets";
 interface Talk {
     title: string;
     description: string;
@@ -52,11 +53,11 @@ if (!images[talk.thumbnail.src]) {
         class="absolute -z-10 w-full h-3/4 bottom-0 left-0 bg-gradient-to-t from-black to-[#00000000] duration-200 group-hover:opacity-0"
     >
     </div>
-    <div
-        style={`background: url('${images[talk.thumbnail.src]()}') no-repeat center center;`}
-        class="absolute w-full h-full top-0 left-0 -z-30"
-    >
-    </div>
+    <Image
+        src={images[talk.thumbnail.src]()}
+        alt={talk.title}
+        class="absolute w-full h-full top-0 left-0 -z-30 object-cover"
+    />
 
     <div class="translate-y-36 duration-200 group-hover:translate-y-0">
         <p class="text-gray-300 text-sm mb-2">{talk.speaker.name}</p>
