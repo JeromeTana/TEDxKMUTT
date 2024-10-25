@@ -9,13 +9,6 @@ import cover from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
 const lang = getLangFromUrl(Astro.url);
 const allReadings = await getCollection("read");
 
-const truncate = (text: string, maxLength: number) => {
-    if (text.length > maxLength) {
-        return text.substring(0, maxLength) + "...";
-    }
-    return text;
-};
-
 function extractContent(text: string) {
     if (typeof text !== "string") return "";
 
@@ -54,7 +47,7 @@ const authorMap = Object.fromEntries(
                                     thumbnail={reading.data.thumbnail}
                                     title={reading.data.title}
                                     categories={reading.data.categories}
-                                    content={truncate(content, 80)}
+                                    content={content}
                                     author={author.name}
                                     authorAvatar={author.avatar.src}
                                     pubDate={new Date(
