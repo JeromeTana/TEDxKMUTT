@@ -30,7 +30,7 @@ const BlogItem: React.FC<Props> = ({ thumbnail, categories, title, content, auth
 
             </div>
             <h2 className="text-2xl font-bold">{title}</h2>
-            <p className="text-gray-400 text-md truncate-2">{content}</p>
+            <p className="text-gray-400 text-md line-clamp-2">{content}</p>
             <div className="flex items-center space-x-1 space-y-4">
                 <img src={authorAvatar} className="w-8 h-8 object-cover rounded-full mr-2" alt={`${author}'s avatar`} />
                 <div className="text-sm">
