@@ -7,7 +7,7 @@
     "bio": "Assoc. Prof. Kwanchanok Pasuwat is a lecturer and biological engineering researcher. Interested in researches specifically the field of engineering cooperated with biology to improve the quality of patient treatment in any cases."
   },
   "thumbnail": {
-    "src": "@/assets/images/talks/2016/3.png",
+    "src": "/src/assets/images/talks/2016/3.png",
     "alt": "เทคโนโลยีเพาะเลี้ยงเซลล์เนื้อเยื่อกระดูกอ่อน cover"
   },
   "url": "https://www.youtube.com/watch?v=d7kF7pI-CNQ&list=PLTtccHhwDU8rrMggXvcC2-CZcndM_OmBd&index=9",

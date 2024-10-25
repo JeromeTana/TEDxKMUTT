@@ -7,7 +7,7 @@
     "bio": "Dr. Weerachat Kittirattanapaiboon is the founder and CEO of Biodegradable Packaging for Environment Plc., whose brand ‘Gracz’ is the pioneer in this field. These are food packaging made from natural plant fibers that work as well as, if not better than, plastic and foam packaging without damaging the environmental."
   },
   "thumbnail": {
-    "src": "@/assets/images/talks/2016/2.png",
+    "src": "/src/assets/images/talks/2016/2.png",
     "alt": "สมการของเรื่องเล็กๆ cover"
   },
   "url": "https://www.youtube.com/watch?v=WuEFVTrQSzg&list=PLTtccHhwDU8rrMggXvcC2-CZcndM_OmBd&index=2&t=412s",

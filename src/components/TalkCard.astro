@@ -25,6 +25,15 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const { talk } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/images/talks/2016/*.{jpeg,jpg,png,gif}"
+);
+
+if (!images[talk.thumbnail.src]) {
+    throw new Error(
+        `"${talk.thumbnail.src}" does not exist in glob: "src/assets/images/talks/2016/*.{jpeg,jpg,png,gif}"`
+    );
+}
 ---
 
 <div
@@ -44,7 +53,7 @@ const { talk } = Astro.props;
     >
     </div>
     <div
-        style={`background: url('${talk.thumbnail.src}') no-repeat center center;`}
+        style={`background: url('${images[talk.thumbnail.src]()}') no-repeat center center;`}
         class="absolute w-full h-full top-0 left-0 -z-30"
     >
     </div>

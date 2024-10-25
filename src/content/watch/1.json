@@ -7,7 +7,7 @@
     "bio": "ดร.ทีปานิส ชาชิโย, ภาควิชาฟิสิกส์ คณะวิทยาศาสตร์ มหาวิทยาลัยนเรศวร"
   },
   "thumbnail": {
-    "src": "../../assets/images/talks/2016/1.png",
+    "src": "/src/assets/images/talks/2016/1.png",
     "alt": "สร้างเด็กให้สร้างสรรค์ cover"
   },
   "url": "https://www.youtube.com/watch?v=OZudw9uBf7A&list=PLTtccHhwDU8rrMggXvcC2-CZcndM_OmBd&index=3&t=56s",
