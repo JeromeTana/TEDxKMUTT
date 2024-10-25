@@ -28,7 +28,9 @@ const t = useTranslations(lang);
 const { talk } = Astro.props;
 ---
 
-<div class="group relative pt-32 pb-6 px-4 rounded-2xl overflow-clip">
+<div
+    class="group relative flex flex-col justify-end h-[28rem] pb-6 px-4 rounded-2xl overflow-clip"
+>
     <Icon
         name="mdi:play"
         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-60 duration-200 group-hover:opacity-0"
@@ -57,7 +59,9 @@ const { talk } = Astro.props;
             {talk.description}
         </p>
     </div>
-    <Button variant={"border"} icon="mdi:play">
-        {t("watch.now")}
-    </Button>
+    <div>
+        <Button variant={"border"} icon="mdi:play">
+            {t("watch.now")}
+        </Button>
+    </div>
 </div>
