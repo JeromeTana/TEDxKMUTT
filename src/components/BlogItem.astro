@@ -24,14 +24,32 @@ interface Props {
 
 const { blog, author, content } = Astro.props as Props;
 
-function extractContent(text: string) {
-  if (typeof text !== "string") return "";
-  const lines = text.split("\n");
-  if (lines[0] && lines[0].startsWith("#")) {
-    lines.shift()?.replace("#", "").trim() || "";
-  }
-  const content = lines.join(" ");
-  return content;
+function flattenMarkdown(markdownText: string) {
+    return markdownText
+        // Remove headers
+        .replace(/^#{1,6}\s+/gm, "")
+        // Remove bold and italic formatting
+        .replace(/(\*\*|__)(.*?)\1/g, "$2")
+        .replace(/(\*|_)(.*?)\1/g, "$2")
+        // Remove strikethrough
+        .replace(/~~(.*?)~~/g, "$1")
+        // Remove links but keep text
+        .replace(/\[([^\]]+)]\(([^)]+)\)/g, "$1")
+        // Remove images but keep alt text
+        .replace(/!\[([^\]]*)]\(([^)]+)\)/g, "$1")
+        // Remove inline code
+        .replace(/`([^`]+)`/g, "$1")
+        // Remove code blocks
+        .replace(/```[\s\S]*?```/g, "")
+        // Remove horizontal lines
+        .replace(/---+/g, "")
+        // Remove lists and list markers
+        .replace(/^\s*([-*+]|\d+\.)\s+/gm, "")
+        // Remove blockquotes
+        .replace(/^\s*>+/gm, "")
+        // Remove extra whitespace and new lines
+        .replace(/\n{2,}/g, "\n")
+        .trim();
 }
 
 ---
@@ -51,7 +69,7 @@ function extractContent(text: string) {
 
     </div>
     <h2 class="text-2xl font-bold">{blog.title}</h2>
-    <p class="text-gray-400 text-md line-clamp-2">{content}</p>
+    <p class="text-gray-400 text-md line-clamp-2">{flattenMarkdown(content)}</p>
     <div class="flex items-center space-x-1 space-y-4">
         <img src={author.avatar.src} class="w-8 h-8 object-cover rounded-full mr-2" alt={`${author.name}'s avatar`} />
         <div class="text-sm">
