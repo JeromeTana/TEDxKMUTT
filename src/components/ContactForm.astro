@@ -1,0 +1,26 @@
+---
+import cover from "@/assets/images/backgrounds/KMUTT_LX_Building.png";
+
+---
+        <div class="p-2">
+            <div class="relative py-40 rounded-2xl md:rounded-3xl overflow-clip">
+                <img
+                    src={cover.src}
+                    class="absolute top-0 left-0 w-full h-full object-cover"
+                />
+                <div class="absolute bg-black opacity-80 w-full h-full top-0"></div>
+                <div class="absolute bg-primary-500 w-full h-full top-0 mix-blend-overlay"></div>
+
+                <div class="relative max-w-[48rem] px-4 text-center m-auto space-y-4 md:space-y-6">
+                    <div class="space-y-3">
+                        <small class="text-primary-500">
+                            <b>Test</b>
+                        </small>
+                        <h1 class="font-bold text-3xl md:text-4xl text-gray-200">
+                            Test
+                        </h1>
+                    </div>
+                    <p class="text-sm md:text-lg">Test</p>
+                </div>
+            </div>
+        </div>
