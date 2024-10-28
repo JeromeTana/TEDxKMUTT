@@ -11,33 +11,31 @@ const allReadings = await getCollection("read");
 
 const allAuthors = await getCollection("author");
 const authorMap = Object.fromEntries(
-  allAuthors.map((author) => [author.id, author.data]),
+    allAuthors.map((author) => [author.id, author.data]),
 );
 ---
 
 <Layout title="Read · TEDxKMUTT">
-  <main>
-    <Banner
-      tag="Read our articles"
-      title="Beyond the Stage"
-      description="Delve deeper into TEDxKMUTT talks with expert analyses, speaker interviews, and explorations of how these ideas are shaping our future"
-      cover={cover}
-    />
-    <div class="mx-12 px-2">
-      <div class="grid grid-cols-1 lg:grid-cols-3">
-        {allReadings.map((reading) => {
-          const author = authorMap[reading.data.author.id];
-          return (
-            <a href={`/${lang}/read/${reading.slug}`}>
-              <BlogItem 
-                blog={reading.data}
-                content={reading.body}
-                author={author}
-              />
-            </a>
-          );
-        })}
-      </div>
-    </div>
-  </main>
+    <main>
+        <Banner
+            tag="Read our articles"
+            title="Beyond the Stage"
+            description="Delve deeper into TEDxKMUTT talks with expert analyses, speaker interviews, and explorations of how these ideas are shaping our future"
+            cover={cover}
+        />
+        <div class="mx-12 px-2">
+            <div class="grid grid-cols-1 lg:grid-cols-3">
+                {
+                    allReadings.map((reading) => {
+                        const author = authorMap[reading.data.author.id];
+                        return (
+                            <a href={`/${lang}/read/${reading.slug}`}>
+                                <BlogItem blog={reading} author={author} />
+                            </a>
+                        );
+                    })
+                }
+            </div>
+        </div>
+    </main>
 </Layout>
