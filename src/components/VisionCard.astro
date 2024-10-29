@@ -1,16 +1,25 @@
----
-interface VisionCardProps {
-    thumbnail: ImageMetadata;
-    text: string;
+--- 
+
+interface VisionCardProps { 
+  thumbnail: { 
+    src: string; 
+    alt: string; 
+  }; 
+  text: string; 
 }
 
-const { thumbnail, text } = Astro.props as VisionCardProps;
----
+const { thumbnail, text } = Astro.props; 
+--- 
 
-<div class="max-w-sm rounded overflow-hidden shadow-lg">
-    <img class="w-full" src={thumbnail.src} alt="Image" />
-    <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">{text}</div>
-    </div>
+<div class="relative py-20 rounded-2xl md:rounded-3xl overflow-clip bg-red-500"> 
+  <img 
+    src={thumbnail.src} 
+    class="absolute top-0 left-0 w-full h-full object-cover rounded-2xl md:rounded-3xl" 
+  /> 
+  <div class="absolute bg-black opacity-70 w-full h-full top-0"></div> 
+  <div class="absolute bg-black opacity-80 w-full h-full top-0"></div> 
+  <div class="absolute bg-primary-500 w-full h-full top-0 mix-blend-overlay"></div> 
+  <div class="absolute flex items-center justify-center w-full h-full text-center text-white"> 
+    <p class="z-10">{text}</p> 
+  </div> 
 </div>
-This Astro compon
