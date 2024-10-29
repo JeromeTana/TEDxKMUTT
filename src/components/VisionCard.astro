@@ -1,0 +1,11 @@
+---
+const { thumbnail, text } = Astro.props;
+---
+
+<div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <img class="w-full" src={thumbnail} alt="Image" />
+    <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">{text}</div>
+    </div>
+</div>
+This Astro compon
