@@ -6,7 +6,7 @@ interface VisionCardProps {
 const { thumbnail, text } = Astro.props as VisionCardProps; 
 --- 
 
-<div class="relative aspect-square rounded-2xl overflow-hidden group transition-transform hover:cursor-pointer duration-300 hover:scale-105">
+<div class="relative h-[400px] rounded-2xl overflow-hidden group transition-transform hover:cursor-pointer duration-300 hover:scale-105">
     <img 
         src={thumbnail.src}
         alt={text}
