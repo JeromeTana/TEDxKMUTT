@@ -1,28 +1,29 @@
---- 
-interface VisionCardProps { 
+---
+interface VisionCardProps {
     thumbnail: ImageMetadata;
-    text: string; 
-} 
-const { thumbnail, text } = Astro.props as VisionCardProps; 
---- 
+    text: string;
+}
+const { thumbnail, text } = Astro.props as VisionCardProps;
+---
 
-<div class="relative h-[400px] rounded-2xl overflow-hidden group transition-transform hover:cursor-pointer duration-300 hover:scale-105">
-    <img 
+<div
+    class="relative h-[400px] rounded-2xl overflow-hidden group transition-transform hover:cursor-pointer duration-300 hover:scale-105"
+>
+    <img
         src={thumbnail.src}
         alt={text}
         class="absolute inset-0 w-full h-full object-cover"
     />
 
-    
-
     <!-- Additional red tint for deeper effect -->
-    <div class="absolute inset-0 w-full h-full top-0 bg-red-700 mix-blend-overlay"></div>
-    
+    <div
+        class="absolute inset-0 w-full h-full top-0 bg-red-700 mix-blend-overlay"
+    >
+    </div>
+
     <!-- Red overlay -->
     <div class="absolute inset-0 w-full h-full top-0 bg-black opacity-40"></div>
-    
 
-    
     <!-- Text container -->
     <div class="absolute inset-0 flex items-center justify-center p-4">
         <h2 class="text-white text-3xl md:text-4xl font-bold tracking-wider">
