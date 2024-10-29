@@ -24,7 +24,7 @@ import Button from "./Button.astro";
 
       <form class="w-full">
         <div class="mb-4">
-          <label class="block text-sm font-bold mb-2" for="name">Name</label>
+          <label class="block text-sm mb-2" for="name">Name</label>
           <input
             class="w-full p-2 text-black rounded"
             type="text"
@@ -34,9 +34,9 @@ import Button from "./Button.astro";
           />
         </div>
         <div class="mb-4">
-          <label class="block text-sm font-bold mb-2" for="email">Email</label>
+          <label class="block text-sm mb-2" for="email">Email</label>
           <input
-            class="w-full p-2 text-black rounded"
+            class="w-full p-3 text-black rounded"
             type="email"
             id="email"
             name="email"
@@ -44,13 +44,15 @@ import Button from "./Button.astro";
           />
         </div>
         <div class="mb-4">
-          <label class="block text-sm font-bold mb-2" for="message">Message</label>
+          <label class="block text-sm mb-2" for="message">Message</label>
           <textarea
-            class="w-full p-2 text-black rounded"
+            class="w-full p-3 text-black rounded"
             id="message"
             name="message"
             rows="4"
-            required></textarea>
+            required
+            placeholder="Type your message..."
+            ></textarea>
         </div>
         <div class="mb-4">
           <label class="inline-flex items-center">
@@ -59,7 +61,10 @@ import Button from "./Button.astro";
               class="form-checkbox text-red-600"
               required
             />
-            <span class="ml-2">I accept the Terms</span>
+            <span class="ml-2">I accept the 
+              <a href="#" class="underline hover:text-red-500">Terms</a>
+
+            </span>
           </label>
         </div>
         <div class="mb-4 mt-8">
