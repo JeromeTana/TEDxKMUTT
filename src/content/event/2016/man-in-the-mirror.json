@@ -1,0 +1,11 @@
+{
+  "title": "Man in the Mirror",
+  "description": "Inspirations can be found anywhere if one looks deeply enough, or in this case, listens. From the timeless song, Man in the Mirror by Michael Jackson, we draw inspiration for the TEDxKMUTT 2016. Here's how some of the lyrics goes.",
+  "date": "2016-10-08T12:00:00-04:00",
+  "location": "Bangkok, Thailand",
+  "thumbnail": {
+    "src": "/src/assets/images/events/2016/ManInTheMirror.png",
+    "alt": "TEDxKMUTT 2016 - Man in the Mirror"
+  },
+  "url": "https://www.ted.com/tedx/events/18791"
+}
