@@ -13,7 +13,7 @@ const {
 const variantClasses: { [key: string]: string } = {
     normal: "bg-primary-500 text-white hover:bg-primary-600",
     accent: "bg-white text-primary-500 hover:bg-gray-200",
-    border: "border-2 border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white",
+    border: "border-2 border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white group-hover:border-white group-hover:bg-white group-hover:text-primary-500",
     text: "text-primary-500 hover:underline",
 };
 
@@ -29,7 +29,9 @@ const buttonClasses = `
         <a href={href} class={buttonClasses}>
             {icon && !isIconRight && <Icon name={icon} class="mr-2" />}
             <slot />
-            {icon && isIconRight === "right" && <Icon name={icon} class="ml-2" />}
+            {icon && isIconRight === "right" && (
+                <Icon name={icon} class="ml-2" />
+            )}
         </a>
     ) : (
         <button type={type} class={buttonClasses} disabled={disabled}>
