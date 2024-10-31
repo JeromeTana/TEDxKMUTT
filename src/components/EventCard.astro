@@ -1,0 +1,65 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import Button from "./Button.astro";
+
+interface Event {
+    title: string;
+    date: string;
+    thumbnail: {
+        src: string;
+        alt?: string;
+    };
+    description: string;
+    url: string;
+    location: string;
+}
+
+interface Props {
+    event: Event;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { event } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/images/events/2016/*.{jpeg,jpg,png,gif}"
+);
+
+if (!images[event.thumbnail.src]) {
+    throw new Error(
+        `"${event.thumbnail.src}" does not exist in glob: "src/assets/images/events/2016/*.{jpeg,jpg,png,gif}"`
+    );
+}
+---
+
+<a href={event.url} target="_blank" class="group block w-[40rem]">
+    <div
+        class="relative border rounded-3xl p-8 pt-32 space-y-6 overflow-hidden"
+    >
+        <div>
+            <img
+                src={event.thumbnail.src}
+                alt=""
+                class="absolute top-0 left-0 w-full h-full object-cover -z-20"
+            />
+            <div
+                class="absolute top-0 left-0 w-full h-full bg-black opacity-60 -z-10"
+            >
+            </div>
+        </div>
+        <div class="space-y-2">
+            <div>
+                <p class="text-sm text-primary-500 font-bold">
+                    {new Date(event.date).getFullYear()}
+                </p>
+                <h3 class="text-xl font-bold">{event.title}</h3>
+            </div>
+            <p class="text-gray-300 line-clamp-3">
+                {event.description}
+            </p>
+        </div>
+        <Button variant="border">{t("view.details")}</Button>
+    </div>
+</a>
