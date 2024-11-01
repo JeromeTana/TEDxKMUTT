@@ -15,16 +15,10 @@ const { thumbnail, text } = Astro.props as VisionCardProps;
         class="absolute inset-0 w-full h-full object-cover"
     />
 
-    <!-- Additional red tint for deeper effect -->
-    <div
-        class="absolute inset-0 w-full h-full top-0 bg-red-700 mix-blend-overlay"
-    >
+    <div class="absolute bg-black opacity-80 w-full h-full top-0"></div>
+    <div class="absolute bg-primary-500 w-full h-full top-0 mix-blend-overlay">
     </div>
 
-    <!-- Red overlay -->
-    <div class="absolute inset-0 w-full h-full top-0 bg-black opacity-40"></div>
-
-    <!-- Text container -->
     <div class="absolute inset-0 flex items-center justify-center p-4">
         <h2 class="text-white text-3xl md:text-4xl font-bold tracking-wider">
             {text}
