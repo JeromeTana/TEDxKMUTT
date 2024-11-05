@@ -38,7 +38,7 @@ const eventCollection = defineCollection({
     schema: z.object({
         title: z.string(),
         description: z.string(),
-        date: z.date(),
+        date: z.string(),
         location: z.string(),
         thumbnail: z.object({
             src: z.string(),

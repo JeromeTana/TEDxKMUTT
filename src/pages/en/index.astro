@@ -1,7 +1,18 @@
 ---
+import EventCard from "@/components/EventCard.astro";
 import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const allEvents = await getCollection("event");
 ---
 
 <Layout title="TEDxKMUTT">
     <main>TEDxKMUTT - EN</main>
+    {
+        allEvents.map((event) => (
+            <a href={`/en/event/${event.id}`}>
+                <EventCard event={event.data} />
+            </a>
+        ))
+    }
 </Layout>

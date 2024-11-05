@@ -26,6 +26,7 @@ export const ui: UI = {
         "footer.privacy": "Privacy Policy",
         "footer.terms": "Terms of Service",
         "footer.cookies": "Cookies Settings",
+        "view.details": "View details",
         "watch.now": "Watch now",
     },
     th: {
@@ -41,6 +42,7 @@ export const ui: UI = {
         "footer.privacy": "นโยบายความเป็นส่วนตัว",
         "footer.terms": "ข้อกำหนดการใช้งาน",
         "footer.cookies": "การตั้งค่าคุกกี้",
+        "view.details": "ดูรายละเอียด",
         "watch.now": "ดูทอล์ค",
     },
 } as const;
