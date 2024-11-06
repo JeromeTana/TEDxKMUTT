@@ -1,29 +1,8 @@
 ---
 import { flattenMarkdown } from "@/i18n/utils";
-
 interface Props {
-    blog: {
-        data: {
-            thumbnail: {
-                src: string;
-                alt?: string;
-            };
-            categories: string[];
-            title: string;
-            author: {
-                id: string;
-            };
-            pubDate: Date;
-        };
-        body: string;
-    };
-    author: {
-        name: string;
-        avatar: {
-            src: string;
-            alt?: string;
-        };
-    };
+    blog: Blog;
+    author: Author;
 }
 
 const { blog, author } = Astro.props as Props;
