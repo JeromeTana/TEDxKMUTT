@@ -3,21 +3,8 @@ import { Icon } from "astro-icon/components";
 import Button from "./Button.astro";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import { Image } from "astro:assets";
-interface Talk {
-    title: string;
-    description: string;
-    event: any;
-    speaker: {
-        name: string;
-        bio: string;
-    };
-    thumbnail: {
-        src: any;
-        alt?: string;
-    };
-    url: string;
-    relatedTalks?: any[];
-}
+import type { Talk } from "@/types/Talk";
+
 interface Props {
     talk: Talk;
 }

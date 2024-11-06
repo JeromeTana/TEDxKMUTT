@@ -1,18 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import Button from "./Button.astro";
-
-interface Event {
-    title: string;
-    date: string;
-    thumbnail: {
-        src: string;
-        alt?: string;
-    };
-    description: string;
-    url: string;
-    location: string;
-}
+import type { Event } from "@/types/Event";
 
 interface Props {
     event: Event;
