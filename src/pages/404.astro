@@ -1,1 +1,28 @@
-404
+---
+import Banner from "@/components/Banner";
+import Layout from "@/layouts/Layout.astro";
+import cover from "@/assets/images/wave-line-4.png"
+
+---
+
+<Layout title="404 · TEDxKMUTT">
+    <main>
+        <div class="p-2">
+            <div class="relative py-40 rounded-2xl md:rounded-3xl overflow-clip">
+                <img
+                    src={cover.src}
+                    class="absolute top-0 left-0 w-full h-full object-cover"
+                />
+            
+                <div class="relative max-w-[48rem] px-4 text-center m-auto space-y-4 md:space-y-6">
+                    <div class="space-y-3">
+                        <h1 class="font-bold text-3xl md:text-4xl text-gray-200">
+                            Oops! Page Not Found :(
+                        </h1>
+                    </div>
+                    <p class="text-sm md:text-lg">Looks like</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
