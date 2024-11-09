@@ -13,6 +13,12 @@ const allAuthors = await getCollection("author");
 const authorMap = Object.fromEntries(
     allAuthors.map((author) => [author.id, author.data]),
 );
+
+const badgeClasses = `
+    const badgeClasses = "inline-block px-4 py-2 border-2 border-red-500 rounded-full 
+    text-red-500 font-bold uppercase cursor-pointer 
+    transition-colors duration-300 hover:bg-red-500 hover:text-white";
+`;
 ---
 
 <Layout title="Read · TEDxKMUTT">
@@ -24,7 +30,15 @@ const authorMap = Object.fromEntries(
             cover={cover}
         />
         <div class="mx-12 px-2">
-            <!-- Category Badges -->
+            <div class="flex flex-wrap gap-2 mb-4"> 
+                <span class="badge">DESIGN</span> 
+                <span class="badge">TECHNOLOGY</span> 
+                <span class="badge">EDUCATION</span> 
+                <span class="badge">CULTURE</span> 
+                <span class="badge">BUSINESS</span> 
+                <span class="badge">SCIENCE</span> 
+                <span class="badge">ECONOMICS</span> 
+            </div>
         </div>
         <div class="mx-12 px-2">
             <div class="grid grid-cols-1 lg:grid-cols-3">
