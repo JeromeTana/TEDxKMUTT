@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
 import Banner from "@/components/Banner";
+import Button from "@/components/Button.astro";
 import BlogItem from "@/components/BlogItem.astro";
 import cover from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
 
@@ -35,9 +36,9 @@ const categories = [...new Set(allReadings.flatMap((reading) => reading.data.cat
             <div class="flex flex-wrap gap-2 mb-4"> 
                 {
                     categories.map((category) => (
-                        <a href={`/${lang}/read?category=${category}`}>
-                            <span class={badgeClasses}>{category}</span>
-                        </a>
+                        <Button variant="border" href={`/${lang}/read?category=${category}`}>
+                            {category.toUpperCase()}
+                        </Button>
                     ))
                 }
             </div>
