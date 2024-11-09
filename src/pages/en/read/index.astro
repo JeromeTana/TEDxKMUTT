@@ -5,6 +5,7 @@ import { getLangFromUrl } from "@/i18n/utils";
 import Banner from "@/components/Banner";
 import BlogItem from "@/components/BlogItem.astro";
 import cover from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
+import { useState } from "react";
 
 const lang = getLangFromUrl(Astro.url);
 const allReadings = await getCollection("read");
@@ -13,6 +14,14 @@ const allAuthors = await getCollection("author");
 const authorMap = Object.fromEntries(
     allAuthors.map((author) => [author.id, author.data]),
 );
+
+const categories = [...new Set(allReadings.flatMap((reading) => reading.data.categories))];
+
+const [selectedCategory, setSelectedCategory] = useState('All');
+
+const filteredReadings = selectedCategory === 'All'
+    ? allReadings
+    : allReadings.filter((reading) => reading.data.categories.includes(selectedCategory));
 ---
 
 <Layout title="Read · TEDxKMUTT">
@@ -24,17 +33,27 @@ const authorMap = Object.fromEntries(
             cover={cover}
         />
         <div class="mx-12 px-2">
+            <div class="flex justify-center">
+                <select onchange="(event) => setSelectedCategory(event.target.value)" class="p-2 rounded-md bg-gray-200">
+                    <option value="All">All</option>
+                    {categories.map((category) => (
+                        <option value={category}>{category}</option>
+                    ))}
+                </select>
+            </div>
+        </div>
+        <div class="mx-12 px-2">
             <div class="grid grid-cols-1 lg:grid-cols-3">
-                {
-                    allReadings.map((reading) => {
-                        const author = authorMap[reading.data.author.id];
-                        return (
+                {filteredReadings.map((reading) => {
+                    const author = authorMap[reading.data.author.id];
+                    return (
+                        <div id={reading.slug}>
                             <a href={`/${lang}/read/${reading.slug}`}>
                                 <BlogItem blog={reading} author={author} />
                             </a>
-                        );
-                    })
-                }
+                        </div>
+                    );
+                })}
             </div>
         </div>
     </main>
