@@ -1,0 +1,15 @@
+---
+import Button from "@/components/Button.astro";
+
+interface Props {
+    facebookUrl: string;
+    xUrl: string;
+    linkedinUrl: string;
+}
+---
+
+<div>
+    <Button variant="accent" href="{facebookUrl}" class="mr-2">FB Share</Button>
+    <Button variant="accent" href="{xUrl}" class="mr-2">X Share</Button>
+    <Button variant="accent" href="{linkedinUrl}">LinkedIn Share</Button>
+</div>
