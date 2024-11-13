@@ -14,6 +14,7 @@ import QuoteL from "@/assets/images/Quote_l.png";
 import QuoteR from "@/assets/images/Quote_r.png";
 import Preparation from "@/assets/images/backgrounds/Prepare.jpg";
 import Audience from "@/assets/images/backgrounds/Audience.jpg";
+import QuoteDecore from "@/assets/images/wave-line-4.png";
 
 const allEvents = await getCollection("event");
 const allBlogs = await getCollection("read");
@@ -22,63 +23,100 @@ const allTalks = await getCollection("watch");
 
 <Layout title="TEDxKMUTT">
     <main>
-        <div>
-            <p>Ideas worth spreading</p>
-            <div>
-                <h1>Reimagining the Future, One Talk at a Time</h1>
-                <p>
-                    Experience thought-provoking talks from visionary thinkers
-                    and innovators at King Mongkut's University of Technology
-                    Thonburi
+        <div
+            class="bg-gray-400 flex justify-center items-center h-[60vh] m-2 p-8 rounded-3xl"
+        >
+            <div class="max-w-screen-md text-center">
+                <p class="text-primary-500 font-bold mb-6">
+                    Ideas worth spreading
                 </p>
+                <div class="mb-11">
+                    <h1 class="text-6xl font-semibold mb-2">
+                        Reimagining the Future, <br />One Talk at a Time
+                    </h1>
+                    <p class="text-2xl">
+                        Experience thought-provoking talks from visionary
+                        thinkers and innovators at King Mongkut's University of
+                        Technology Thonburi
+                    </p>
+                </div>
+                <div>
+                    <Button href="">Watch talks</Button>
+                    <Button href="" variant="accent">Read blogs</Button>
+                </div>
             </div>
+        </div>
+        <div class="py-80 text-center">
+            <div class="relative">
+                <div class="relative max-w-screen-lg m-auto">
+                    <img
+                        src={QuoteL.src}
+                        alt="Quote_L"
+                        class="absolute bottom-16 left-0 w-24"
+                    />
+                    <p class="text-6xl font-bold">Ideas worth spreading</p>
+                    <img
+                        src={QuoteR.src}
+                        alt="Quote_R"
+                        class="absolute top-16 right-0 w-24"
+                    />
+                </div>
+                <img
+                    src={QuoteDecore.src}
+                    alt=""
+                    class="absolute top-1/2 -translate-y-1/2 w-full -z-10"
+                />
+            </div>
+        </div>
+        <div class="max-w-screen-xl m-auto flex gap-8 py-64">
+            <img
+                src={Preparation.src}
+                alt="TEDx Preparation"
+                class="w-1/2 aspect-video rounded-2xl object-cover"
+            />
             <div>
-                <Button>Watch talks</Button>
-                <Button variant="accent">Read blogs</Button>
+                <div class="space-y-4 mb-10">
+                    <small class="text-primary-500 font-bold">About us</small>
+                    <h2 class="text-5xl font-semibold">
+                        Ideas in <span class="c-underline">Action</span> at KMUTT
+                    </h2>
+                    <p class="text-2xl leading-10">
+                        TEDxKMUTT brings cutting-edge ideas to King Mongkut's
+                        University of Technology Thonburi. We showcase
+                        innovative thinkers from our community and beyond,
+                        fostering intellectual growth and inspiration
+                    </p>
+                </div>
+                <Button>Getting to know us</Button>
             </div>
         </div>
-        <div>
-            <img src={QuoteL.src} alt="Quote_L" />
-            <img src={QuoteR.src} alt="Quote_R" />
-            <p>Ideas worth spreading</p>
-        </div>
-        <div>
-            <img src={Preparation.src} alt="TEDx Preparation" />
-            <div>
-                <small>About us</small>
-                <h2>Ideas in Action at KMUTT</h2>
-                <p>
-                    TEDxKMUTT brings cutting-edge ideas to King Mongkut's
-                    University of Technology Thonburi. We showcase innovative
-                    thinkers from our community and beyond, fostering
-                    intellectual growth and inspiration
-                </p>
-            </div>
-            <Button>Getting to know us</Button>
-        </div>
-        <div class="grid grid-cols-3">
+        <div class="max-w-screen-xl m-auto grid grid-cols-3 gap-2">
             <VisionCard thumbnail={Audience} text="Innovation" />
             <VisionCard thumbnail={Audience} text="Collaboration" />
             <VisionCard thumbnail={Audience} text="Impact" />
         </div>
-        <div>
+        <div class="flex">
             <div>
-                <small>TEDx</small>
-                <h2>What is TEDx?</h2>
-                <p>
-                    In the spirit of discovering and spreading ideas, TED has
-                    created a program called TEDx. TEDx is a program of local,
-                    self-organized events that bring people together to share a
-                    TED-like experience. Our event is called TEDx[name], where x
-                    = independently organized TED event. At our TEDx[name]
-                    event, TED Talks video and live speakers will combine to
-                    spark deep discussion and connection in a small group. The
-                    TED Conference provides general guidance for the TEDx
-                    program, but individual TEDx events, including ours, are
-                    self-organized.
-                </p>
+                <div class="space-y-4 mb-10">
+                    <small class="text-primary-500 font-bold">TEDx</small>
+                    <h2 class="text-5xl font-semibold">
+                        What is <span class="c-underline">TEDx?</span>
+                    </h2>
+                    <p>
+                        In the spirit of discovering and spreading ideas, TED
+                        has created a program called TEDx. TEDx is a program of
+                        local, self-organized events that bring people together
+                        to share a TED-like experience. Our event is called
+                        TEDx[name], where x = independently organized TED event.
+                        At our TEDx[name] event, TED Talks video and live
+                        speakers will combine to spark deep discussion and
+                        connection in a small group. The TED Conference provides
+                        general guidance for the TEDx program, but individual
+                        TEDx events, including ours, are self-organized.
+                    </p>
+                </div>
+                <Button>Explore more of TEDx</Button>
             </div>
-            <Button>Explore more of TEDx</Button>
             <img src="" alt="TEDx" />
         </div>
         <div>
@@ -127,4 +165,22 @@ const allTalks = await getCollection("watch");
             <ContactForm />
         </div>
     </main>
+
+    <style is:global>
+        .c-underline {
+            position: relative;
+        }
+        .c-underline::after {
+            content: "";
+            position: absolute;
+            bottom: -16px;
+            left: 0;
+            height: 12px;
+            width: 100%;
+            border: solid 2px;
+            border-color: #eb0028 transparent transparent transparent;
+            border-radius: 50%;
+            rotate: -1deg;
+        }
+    </style>
 </Layout>
