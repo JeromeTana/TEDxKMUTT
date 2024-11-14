@@ -1,7 +1,7 @@
 ---
 import { flattenMarkdown } from "@/i18n/utils";
 import Layout from "@/layouts/Layout.astro";
-import { getEntry } from "astro:content";
+import { getEntry, getCollection } from "astro:content";
 import BlogItem from "@/components/BlogItem.astro";
 
 const { slug } = Astro.params ;
@@ -15,7 +15,7 @@ if (entry === undefined) {
     return Astro.redirect("/404");
 }
 
-const author = await getEntry(entry.data.author);
+const author = (await getCollection("author")).find(a => a.id === entry.data.author.id)?.data as Author;
 
 const { Content } = await entry.render();
 
@@ -24,7 +24,7 @@ const { Content } = await entry.render();
 
     <main class="mx-auto max-w-lg lg:max-w-4xl">
         <img src={entry.data.thumbnail.src} alt={entry.data.thumbnail.alt} class="object-cover rounded-3xl w-full">
-        <h1 class="text-4xl ">{entry.data.title}</h1>
+        <h1 class="text-4xl font-bold">{entry.data.title}</h1>
         <div class="flex items-center">
             {
                 entry.data.categories.map((category) => (
@@ -37,16 +37,19 @@ const { Content } = await entry.render();
 
         <div>{flattenMarkdown(entry.body)}</div>
 
-
-
-        {
-            author && (
-                <div>
-                    <p>Written by: {author.data.name}</p>
-                    <img src={author.data.avatar.src} alt={author.data.avatar.alt}>
-                </div>
-            )
-        }
+        <div class="flex items-center space-x-1 space-y-4">
+            <img
+                src={author.avatar.src}
+                class="w-8 h-8 object-cover rounded-full mr-2"
+                alt={`${author.name}'s avatar`}
+            />
+            <div class="text-sm">
+                <p>{author.name}</p>
+                <p class="text-xs text-gray-400">
+                    {entry.data.pubDate.toDateString()}
+                </p>
+            </div>
+        </div>
     </main>
 
 </Layout>
