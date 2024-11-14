@@ -17,8 +17,6 @@ if (entry === undefined) {
 
 const author = (await getCollection("author")).find(a => a.id === entry.data.author.id)?.data as Author;
 
-const { Content } = await entry.render();
-
 ---
 <Layout title="Read · TEDxKMUTT">
 
