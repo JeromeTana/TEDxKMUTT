@@ -1,8 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getEntry } from "astro:content";
+import BlogItem from "@/components/BlogItem.astro";
 
-const { slug } = Astro.params;
+const { slug } = Astro.params ;
 
 if (slug === undefined) {
     throw new Error("Slug is required");
@@ -19,11 +20,30 @@ const { Content } = await entry.render();
 
 ---
 <Layout title="Read · TEDxKMUTT">
-<Content />
-{
-    author && (
-        <p>Written by: {author.data.name}</p>
-        <img src={author.data.avatar.src} alt={author.data.avatar.alt}>
-    )
-}
+
+    <main class="mx-auto max-w-lg lg:max-w-4xl">
+        <img src={entry.data.thumbnail.src} alt={entry.data.thumbnail.alt} class="w-full object-cover">
+        <h1>{entry.data.title}</h1>
+        <p>{entry.body}</p>
+
+        <div class="flex items-center">
+            {
+                entry.data.categories.map((category) => (
+                    <span class="bg-[#46000C] mt-6 mb-2 text-red-600 rounded-full text-sm px-3 py-1 mr-2">
+                        {category.toUpperCase()}
+                    </span>
+                ))
+            }
+        </div>
+
+        {
+            author && (
+                <div>
+                    <p>Written by: {author.data.name}</p>
+                    <img src={author.data.avatar.src} alt={author.data.avatar.alt}>
+                </div>
+            )
+        }
+    </main>
+
 </Layout>
