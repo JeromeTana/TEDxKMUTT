@@ -1,4 +1,5 @@
 ---
+import { flattenMarkdown } from "@/i18n/utils";
 import Layout from "@/layouts/Layout.astro";
 import { getEntry } from "astro:content";
 import BlogItem from "@/components/BlogItem.astro";
@@ -22,10 +23,8 @@ const { Content } = await entry.render();
 <Layout title="Read · TEDxKMUTT">
 
     <main class="mx-auto max-w-lg lg:max-w-4xl">
-        <img src={entry.data.thumbnail.src} alt={entry.data.thumbnail.alt} class="w-full object-cover">
-        <h1>{entry.data.title}</h1>
-        <p>{entry.body}</p>
-
+        <img src={entry.data.thumbnail.src} alt={entry.data.thumbnail.alt} class="object-cover rounded-3xl w-full">
+        <h1 class="text-4xl ">{entry.data.title}</h1>
         <div class="flex items-center">
             {
                 entry.data.categories.map((category) => (
@@ -35,6 +34,10 @@ const { Content } = await entry.render();
                 ))
             }
         </div>
+
+        <div>{flattenMarkdown(entry.body)}</div>
+
+
 
         {
             author && (
