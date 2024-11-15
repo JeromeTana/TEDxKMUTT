@@ -20,9 +20,9 @@ const author = (await getCollection("author")).find(a => a.id === entry.data.aut
 ---
 <Layout title="Read · TEDxKMUTT">
 
-    <main class="mx-auto max-w-lg lg:max-w-4xl">
+    <main class="mx-auto max-w-lg lg:max-w-4xl pt-8">
         <img src={entry.data.thumbnail.src} alt={entry.data.thumbnail.alt} class="object-cover rounded-xl w-full">
-        <h1 class="text-4xl font-bold">{entry.data.title}</h1>
+        <h1 class="text-4xl font-bold mt-8">{entry.data.title}</h1>
         <div class="flex items-center">
             {
                 entry.data.categories.map((category) => (
