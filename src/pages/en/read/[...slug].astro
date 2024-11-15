@@ -3,6 +3,7 @@ import { flattenMarkdown } from "@/i18n/utils";
 import Layout from "@/layouts/Layout.astro";
 import { getEntry, getCollection } from "astro:content";
 import BlogItem from "@/components/BlogItem.astro";
+import SocialButtons from "@/layouts/SocialButtons.astro";
 
 const { slug } = Astro.params ;
 
@@ -33,12 +34,12 @@ const author = (await getCollection("author")).find(a => a.id === entry.data.aut
             }
         </div>
 
-        <div>{flattenMarkdown(entry.body)}</div>
+        <div class="pt-8">{flattenMarkdown(entry.body)}</div>
 
-        <div class="flex items-center space-x-1 space-y-4">
+        <div class="flex items-center mt-8">
             <img
                 src={author.avatar.src}
-                class="w-8 h-8 object-cover rounded-full mr-2"
+                class="w-8 h-8 object-cover rounded-full mr-3"
                 alt={`${author.name}'s avatar`}
             />
             <div class="text-sm">
@@ -47,6 +48,13 @@ const author = (await getCollection("author")).find(a => a.id === entry.data.aut
                     {entry.data.pubDate.toDateString()}
                 </p>
             </div>
+        </div>
+
+        <div class="mt-12">
+            <SocialButtons facebookUrl=""
+                xUrl=""
+                linkedinUrl=""
+            />
         </div>
     </main>
 
