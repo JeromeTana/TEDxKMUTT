@@ -18,6 +18,15 @@ if (entry === undefined) {
 
 const author = (await getCollection("author")).find(a => a.id === entry.data.author.id)?.data as Author;
 
+async function getRelatedArticles() {
+    const allEntries = await getCollection("read");
+        return Promise.all(allEntries.filter((e) => e.id !== entry?.id).map(async (e) => ({
+            item: e,
+            author: (await getCollection("author")).find(a => a.id === e.data.author.id)?.data as Author,
+        })));
+}
+
+
 ---
 <Layout title="Read · TEDxKMUTT">
 
@@ -51,11 +60,25 @@ const author = (await getCollection("author")).find(a => a.id === entry.data.aut
         </div>
 
         <div class="mt-12">
-            <SocialButtons facebookUrl=""
-                xUrl=""
-                linkedinUrl=""
-            />
+            <SocialButtons facebookUrl="" 
+            xUrl=""
+            linkedinUrl=""/>
+            </div>
+
+        <div class="mt-12">
+            <h1>อ่านบทความอื่น ๆ เพิ่มเติม 
+            {
+                getRelatedArticles().then(relatedArticles => 
+                    relatedArticles.map(({ item, author }) => (
+                        <BlogItem
+                            blog={item}
+                            author={author}
+                        />
+                    ))
+                )
+            }
         </div>
+        
     </main>
 
 </Layout>
