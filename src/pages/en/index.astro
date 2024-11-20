@@ -177,8 +177,10 @@ const authorMap = Object.fromEntries(
                     <div slot="headline">
                         A <span class="c-underline">Legacy</span> of Inspiration
                     </div>
-                    <!-- <EventCard event={allEvents} /> -->
                 </Section>
+                <div class="flex gap-2">
+                    {allEvents.map((event) => <EventCard event={event.data} />)}
+                </div>
             </Container>
             <img
                 src={EventDecoreImg.src}
@@ -198,8 +200,10 @@ const authorMap = Object.fromEntries(
                     <div slot="headline">
                         Ideas That <span class="c-underline">Resonate</span>
                     </div>
-                    <!-- <EventCard event={allEvents} /> -->
                 </Section>
+                <div class="grid grid-cols-3">
+                    {allTalks.map((talk) => <TalkCard talk={talk.data} />)}
+                </div>
                 <Button>All talks</Button>
             </Container>
         </div>
