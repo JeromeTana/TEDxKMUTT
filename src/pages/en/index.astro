@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { getLangFromUrl } from "@/i18n/utils";
 
 import Button from "@/components/Button.astro";
 import EventCard from "@/components/EventCard.astro";
@@ -7,22 +8,37 @@ import TalkCard from "@/components/TalkCard.astro";
 import ContactForm from "@/components/ContactForm.astro";
 import BlogItem from "@/components/BlogItem.astro";
 import VisionCard from "@/components/VisionCard.astro";
+import Container from "@/components/Container.astro";
+import Section from "@/components/Section.astro";
 
 import Layout from "@/layouts/Layout.astro";
 
 import QuoteL from "@/assets/images/Quote_l.png";
 import QuoteR from "@/assets/images/Quote_r.png";
 import Preparation from "@/assets/images/backgrounds/Prepare.jpg";
+import StageImg from "@/assets/images/backgrounds/Stage.jpg";
+import StairImg from "@/assets/images/backgrounds/Stair.jpg";
 import Audience from "@/assets/images/backgrounds/Audience.jpg";
+import EventDecoreImg from "@/assets/images/wave-line-1.png";
+import BlogDecoreImg from "@/assets/images/wave-line-2.png";
+import TedxDecoreImg from "@/assets/images/wave-line-3.png";
 import QuoteDecore from "@/assets/images/wave-line-4.png";
+import TedxImg from "@/assets/images/Tedx.png";
 
 const allEvents = await getCollection("event");
-const allBlogs = await getCollection("read");
 const allTalks = await getCollection("watch");
+
+const lang = getLangFromUrl(Astro.url);
+const allReadings = await getCollection("read");
+
+const allAuthors = await getCollection("author");
+const authorMap = Object.fromEntries(
+    allAuthors.map((author) => [author.id, author.data])
+);
 ---
 
-<Layout title="TEDxKMUTT">
-    <main>
+<Layout title="TEDx KMUTT">
+    <div class="space-y-80">
         <div
             class="bg-gray-400 flex justify-center items-center h-[60vh] m-2 p-8 rounded-3xl"
         >
@@ -46,125 +62,178 @@ const allTalks = await getCollection("watch");
                 </div>
             </div>
         </div>
-        <div class="py-80 text-center">
-            <div class="relative">
-                <div class="relative max-w-screen-lg m-auto">
-                    <img
-                        src={QuoteL.src}
-                        alt="Quote_L"
-                        class="absolute bottom-16 left-0 w-24"
-                    />
-                    <p class="text-6xl font-bold">Ideas worth spreading</p>
-                    <img
-                        src={QuoteR.src}
-                        alt="Quote_R"
-                        class="absolute top-16 right-0 w-24"
-                    />
-                </div>
+
+        <div class="relative !mt-48 !mb-96 py-32 text-center">
+            <div class="relative max-w-screen-lg m-auto">
                 <img
-                    src={QuoteDecore.src}
-                    alt=""
-                    class="absolute top-1/2 -translate-y-1/2 w-full -z-10"
+                    src={QuoteL.src}
+                    alt="Quote_L"
+                    class="absolute bottom-16 left-0 w-24"
+                />
+                <p class="text-6xl font-bold">Ideas worth spreading</p>
+                <img
+                    src={QuoteR.src}
+                    alt="Quote_R"
+                    class="absolute top-16 right-0 w-24"
                 />
             </div>
-        </div>
-        <div class="max-w-screen-xl m-auto flex gap-8 py-64">
             <img
-                src={Preparation.src}
-                alt="TEDx Preparation"
-                class="w-1/2 aspect-video rounded-2xl object-cover"
+                src={QuoteDecore.src}
+                alt=""
+                class="absolute top-1/2 -translate-y-1/3 w-full -z-10"
             />
-            <div>
-                <div class="space-y-4 mb-10">
-                    <small class="text-primary-500 font-bold">About us</small>
-                    <h2 class="text-5xl font-semibold">
+        </div>
+
+        <Container>
+            <div class="flex gap-8">
+                <img
+                    src={Preparation.src}
+                    alt="TEDx Preparation"
+                    class="w-1/2 aspect-video rounded-2xl object-cover"
+                />
+                <Section
+                    tag="About us"
+                    description=`TEDx KMUTT brings cutting-edge ideas to King
+                            Mongkut's University of Technology Thonburi. We
+                            showcase innovative thinkers from our community and
+                            beyond, fostering intellectual growth and
+                            inspiration`
+                >
+                    <div slot="headline">
                         Ideas in <span class="c-underline">Action</span> at KMUTT
-                    </h2>
-                    <p class="text-2xl leading-10">
-                        TEDxKMUTT brings cutting-edge ideas to King Mongkut's
-                        University of Technology Thonburi. We showcase
-                        innovative thinkers from our community and beyond,
-                        fostering intellectual growth and inspiration
-                    </p>
+                    </div>
+                    <Button>Getting to know us</Button>
+                </Section>
+            </div>
+        </Container>
+
+        <Container>
+            <div class="grid grid-cols-3 gap-2">
+                <VisionCard thumbnail={Audience} text="Innovation" />
+                <VisionCard thumbnail={StairImg} text="Collaboration" />
+                <VisionCard thumbnail={StageImg} text="Impact" />
+            </div>
+        </Container>
+        <div class="relative">
+            <Container>
+                <div class="flex
+            justify-between">
+                    <Section
+                        tag="TEDx"
+                        description=`In the spirit of discovering and spreading ideas,
+                            TED has created a program called TEDx.
+
+                            TEDx is a program of local, self-organized events that bring
+                            people together to share a TED-like experience. Our
+                            event is called TEDx[name],
+                            
+                            where x = independently
+                            organized TED event. At our TEDx[name] event,
+                            
+                            TED
+                            Talks video and live speakers will combine to spark
+                            deep discussion and connection in a small group. The
+                            TED Conference provides general guidance for the
+                            TEDx program,
+                            
+                            but individual TEDx events, including
+                            ours, are self-organized.`
+                    >
+                        <div slot="headline">
+                            What is <span class="c-underline">TEDx?</span>
+                        </div>
+                        <Button>Explore more of TEDx</Button>
+                    </Section>
+                    <img
+                        src={TedxImg.src}
+                        alt="TEDx"
+                        class="border border-slate-600 rounded-2xl"
+                    />
                 </div>
-                <Button>Getting to know us</Button>
-            </div>
+            </Container>
+            <img
+                src={TedxDecoreImg.src}
+                alt=""
+                class="absolute top-0 -translate-y-2/3 w-full -z-10"
+            />
         </div>
-        <div class="max-w-screen-xl m-auto grid grid-cols-3 gap-2">
-            <VisionCard thumbnail={Audience} text="Innovation" />
-            <VisionCard thumbnail={Audience} text="Collaboration" />
-            <VisionCard thumbnail={Audience} text="Impact" />
+
+        <div class="relative">
+            <Container>
+                <Section
+                    tag="Our past journeys"
+                    description=`Explore our previous events that have illuminated
+                    groundbreaking research, visionary projects, and
+                    transformative ideas born at KMUTT and beyond`
+                    style="text-center"
+                >
+                    <div slot="headline">
+                        A <span class="c-underline">Legacy</span> of Inspiration
+                    </div>
+                    <!-- <EventCard event={allEvents} /> -->
+                </Section>
+            </Container>
+            <img
+                src={EventDecoreImg.src}
+                alt=""
+                class="absolute bottom-0 translate-y-1/2 w-full -z-10"
+            />
         </div>
-        <div class="flex">
-            <div>
-                <div class="space-y-4 mb-10">
-                    <small class="text-primary-500 font-bold">TEDx</small>
-                    <h2 class="text-5xl font-semibold">
-                        What is <span class="c-underline">TEDx?</span>
-                    </h2>
-                    <p>
-                        In the spirit of discovering and spreading ideas, TED
-                        has created a program called TEDx. TEDx is a program of
-                        local, self-organized events that bring people together
-                        to share a TED-like experience. Our event is called
-                        TEDx[name], where x = independently organized TED event.
-                        At our TEDx[name] event, TED Talks video and live
-                        speakers will combine to spark deep discussion and
-                        connection in a small group. The TED Conference provides
-                        general guidance for the TEDx program, but individual
-                        TEDx events, including ours, are self-organized.
-                    </p>
+        <div class="bg-[#131313] py-32">
+            <Container>
+                <Section
+                    tag="Highlighted talks"
+                    description=`Watch standout presentations from KMUTT researchers, alumni, 
+                    and invited experts that exemplify our commitment to advancing
+                     knowledge and technology`
+                    style="text-center"
+                >
+                    <div slot="headline">
+                        Ideas That <span class="c-underline">Resonate</span>
+                    </div>
+                    <!-- <EventCard event={allEvents} /> -->
+                </Section>
+                <Button>All talks</Button>
+            </Container>
+        </div>
+        <div class="relative">
+            <Container>
+                <Section
+                    tag="Read blogs"
+                    description=`Delve deeper into TEDx KMUTT talks with expert analyses,
+                        speaker interviews, and explorations of how these ideas
+                        are shaping our future`
+                    style="text-center"
+                >
+                    <div slot="headline">
+                        <h2>
+                            <span class="c-underline">Beyond</span> the Stage
+                        </h2>
+                    </div>
+                    <!-- <EventCard event={allEvents} /> -->
+                </Section>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-16">
+                    {
+                        allReadings.map((reading) => {
+                            const author = authorMap[reading.data.author.id];
+                            return (
+                                <a href={`/${lang}/read/${reading.slug}`}>
+                                    <BlogItem blog={reading} author={author} />
+                                </a>
+                            );
+                        })
+                    }
                 </div>
-                <Button>Explore more of TEDx</Button>
-            </div>
-            <img src="" alt="TEDx" />
+                <Button>All blogs</Button>
+            </Container>
+            <img
+                src={BlogDecoreImg.src}
+                alt=""
+                class="absolute top-0 -translate-y-1/4 w-full -z-10"
+            />
         </div>
-        <div>
-            <small>Our past journeys</small>
-            <h2>A Legacy of Inspiration</h2>
-            <p>
-                Explore our previous events that have illuminated groundbreaking
-                research, visionary projects, and transformative ideas born at
-                KMUTT and beyond
-            </p>
-            <!-- <EventCard event={allEvents} /> -->
-        </div>
-        <div>
-            <div>
-                <small>Highlighted talks</small>
-                <h2>Ideas That Resonate</h2>
-                <p>
-                    Watch standout presentations from KMUTT researchers, alumni,
-                    and invited experts that exemplify our commitment to
-                    advancing knowledge and technology
-                </p>
-            </div>
-            <div>
-                <!-- {
-                    allTalks.map((talk) => (
-                        <TalkCard talk={talk} />
-                    ))
-                } -->
-            </div>
-            <Button>All talks</Button>
-        </div>
-        <div>
-            <div>
-                <small>Read blogs</small>
-                <h2>Beyond the Stage</h2>
-                <p>
-                    Delve deeper into TEDxKMUTT talks with expert analyses,
-                    speaker interviews, and explorations of how these ideas are
-                    shaping our future
-                </p>
-            </div>
-            <!-- <BlogItem /> -->
-            <Button>All blogs</Button>
-        </div>
-        <div>
-            <ContactForm />
-        </div>
-    </main>
+        <ContactForm />
+    </div>
 
     <style is:global>
         .c-underline {
@@ -180,7 +249,7 @@ const allTalks = await getCollection("watch");
             border: solid 2px;
             border-color: #eb0028 transparent transparent transparent;
             border-radius: 50%;
-            rotate: -1deg;
+            rotate: -2deg;
         }
     </style>
 </Layout>
