@@ -23,32 +23,34 @@ if (!images[event.thumbnail.src]) {
 }
 ---
 
-<a {...props} href={event.url} target="_blank" class="group block w-[40rem]">
-    <div
-        class="relative border border-gray-500 rounded-3xl p-8 pt-32 space-y-6 overflow-hidden"
-    >
-        <div>
-            <img
-                src={event.thumbnail.src}
-                alt=""
-                class="absolute top-0 left-0 w-full h-full object-cover -z-20"
-            />
-            <div
-                class="absolute top-0 left-0 w-full h-full bg-black opacity-60 -z-10"
-            >
-            </div>
-        </div>
-        <div class="space-y-2">
+<div {...props}>
+    <a href={event.url} target="_blank" class="group block w-[40rem]">
+        <div
+            class="relative border border-gray-500 rounded-3xl p-8 pt-32 space-y-6 overflow-hidden"
+        >
             <div>
-                <p class="text-sm text-primary-500 font-bold">
-                    {new Date(event.date).getFullYear()}
-                </p>
-                <h3 class="text-xl font-bold">{event.title}</h3>
+                <img
+                    src={event.thumbnail.src}
+                    alt=""
+                    class="absolute top-0 left-0 w-full h-full object-cover -z-20"
+                />
+                <div
+                    class="absolute top-0 left-0 w-full h-full bg-black opacity-60 -z-10"
+                >
+                </div>
             </div>
-            <p class="text-gray-300 line-clamp-3">
-                {event.description}
-            </p>
+            <div class="space-y-2">
+                <div>
+                    <p class="text-sm text-primary-500 font-bold">
+                        {new Date(event.date).getFullYear()}
+                    </p>
+                    <h3 class="text-xl font-bold">{event.title}</h3>
+                </div>
+                <p class="text-gray-300 line-clamp-3">
+                    {event.description}
+                </p>
+            </div>
+            <Button variant="border">{t("view.details")}</Button>
         </div>
-        <Button variant="border">{t("view.details")}</Button>
-    </div>
-</a>
+    </a>
+</div>
