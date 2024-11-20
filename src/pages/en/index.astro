@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
+import "aos/dist/aos.css";
 
 import Button from "@/components/Button.astro";
 import EventCard from "@/components/EventCard.astro";
@@ -39,8 +40,9 @@ const authorMap = Object.fromEntries(
 ---
 
 <Layout title="TEDx KMUTT">
-    <div class="space-y-80">
+    <div class="space-y-80 overflow-hidden">
         <div
+            data-aos="zoom-out"
             class="relative bg-gray-400 flex justify-center items-center h-[60vh] m-2 p-8 rounded-3xl overflow-clip"
         >
             <img
@@ -51,20 +53,24 @@ const authorMap = Object.fromEntries(
             <div class="absolute bg-black opacity-50 w-full h-full top-0"></div>
 
             <div class="max-w-screen-md text-center z-10">
-                <p class="text-primary-500 font-bold mb-6">
+                <p data-aos="fade-up" class="text-primary-500 font-bold mb-6">
                     Ideas worth spreading
                 </p>
                 <div class="mb-11">
-                    <h1 class="text-6xl font-semibold mb-2">
+                    <h1
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                        class="text-6xl font-semibold mb-2"
+                    >
                         Reimagining the Future, <br />One Talk at a Time
                     </h1>
-                    <p class="text-2xl">
+                    <p data-aos="fade-up" data-aos-delay="400" class="text-2xl">
                         Experience thought-provoking talks from visionary
                         thinkers and innovators at King Mongkut's University of
                         Technology Thonburi
                     </p>
                 </div>
-                <div>
+                <div data-aos="fade-up" data-aos-delay="600">
                     <Button href="">Watch talks</Button>
                     <Button href="" variant="accent">Read blogs</Button>
                 </div>
@@ -75,12 +81,21 @@ const authorMap = Object.fromEntries(
             <div class="relative max-w-screen-lg m-auto">
                 <img
                     src={QuoteL.src}
+                    data-aos="fade-up"
                     alt="Quote_L"
                     class="absolute bottom-16 left-0 w-24"
                 />
-                <p class="text-6xl font-bold">Ideas worth spreading</p>
+                <p
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                    data-aos-duration="700"
+                    class="text-6xl font-bold"
+                >
+                    Ideas worth spreading
+                </p>
                 <img
                     src={QuoteR.src}
+                    data-aos="fade-up"
                     alt="Quote_R"
                     class="absolute top-16 right-0 w-24"
                 />
@@ -93,7 +108,7 @@ const authorMap = Object.fromEntries(
         </div>
 
         <Container>
-            <div class="flex gap-8">
+            <div data-aos="fade-up" data-aos-duration="1000" class="flex gap-8">
                 <img
                     src={Preparation.src}
                     alt="TEDx Preparation"
@@ -117,15 +132,32 @@ const authorMap = Object.fromEntries(
 
         <Container>
             <div class="grid grid-cols-3 gap-2">
-                <VisionCard thumbnail={Audience} text="Innovation" />
-                <VisionCard thumbnail={StairImg} text="Collaboration" />
-                <VisionCard thumbnail={StageImg} text="Impact" />
+                <VisionCard
+                    data-aos="fade-up"
+                    thumbnail={Audience}
+                    text="Innovation"
+                />
+                <VisionCard
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                    thumbnail={StairImg}
+                    text="Collaboration"
+                />
+                <VisionCard
+                    data-aos="fade-up"
+                    data-aos-delay="400"
+                    thumbnail={StageImg}
+                    text="Impact"
+                />
             </div>
         </Container>
         <div class="relative">
             <Container>
-                <div class="flex
-            justify-between">
+                <div
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                    class="flex justify-between"
+                >
                     <Section
                         tag="TEDx"
                         description=`In the spirit of discovering and spreading ideas,
@@ -154,7 +186,7 @@ const authorMap = Object.fromEntries(
                     <img
                         src={TedxImg.src}
                         alt="TEDx"
-                        class="border border-slate-600 rounded-2xl"
+                        class="border border-slate-600 rounded-2xl duration-200 shadow-[0_0_2rem_0_rgba(0,0,0,0.3)] hover:shadow-primary-600"
                     />
                 </div>
             </Container>
@@ -178,8 +210,16 @@ const authorMap = Object.fromEntries(
                         A <span class="c-underline">Legacy</span> of Inspiration
                     </div>
                 </Section>
-                <div class="flex gap-2">
-                    {allEvents.map((event) => <EventCard event={event.data} />)}
+                <div data-aos="fade-up" data-aos-delay="200" class="flex gap-2">
+                    {
+                        allEvents.map((event, index) => (
+                            <EventCard
+                                data-aos="fade-up"
+                                data-aos-delay={index * 100}
+                                event={event.data}
+                            />
+                        ))
+                    }
                 </div>
             </Container>
             <img
@@ -201,8 +241,20 @@ const authorMap = Object.fromEntries(
                         Ideas That <span class="c-underline">Resonate</span>
                     </div>
                 </Section>
-                <div class="grid grid-cols-3 gap-2">
-                    {allTalks.map((talk) => <TalkCard talk={talk.data} />)}
+                <div
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                    class="grid grid-cols-3 gap-2"
+                >
+                    {
+                        allTalks.map((talk, index) => (
+                            <TalkCard
+                                data-aos="fade-up"
+                                data-aos-delay={index * 100}
+                                talk={talk.data}
+                            />
+                        ))
+                    }
                 </div>
                 <Button>All talks</Button>
             </Container>
@@ -221,15 +273,23 @@ const authorMap = Object.fromEntries(
                             <span class="c-underline">Beyond</span> the Stage
                         </h2>
                     </div>
-                    <!-- <EventCard event={allEvents} /> -->
                 </Section>
-                <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-16">
+                <div
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                    class="grid grid-cols-2 lg:grid-cols-3 gap-y-12"
+                >
                     {
-                        allReadings.map((reading) => {
+                        allReadings.map((reading, index) => {
                             const author = authorMap[reading.data.author.id];
                             return (
                                 <a href={`/${lang}/read/${reading.slug}`}>
-                                    <BlogItem blog={reading} author={author} />
+                                    <BlogItem
+                                        data-aos="fade-up"
+                                        data-aos-delay={index * 150}
+                                        blog={reading}
+                                        author={author}
+                                    />
                                 </a>
                             );
                         })
@@ -263,4 +323,13 @@ const authorMap = Object.fromEntries(
             rotate: -2deg;
         }
     </style>
+    <script>
+        import AOS from "aos";
+        AOS.init({
+            offset: 120,
+            duration: 500,
+            easing: "ease-in-out",
+            once: true,
+        });
+    </script>
 </Layout>
