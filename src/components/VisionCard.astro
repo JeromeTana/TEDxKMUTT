@@ -7,7 +7,7 @@ const { thumbnail, text } = Astro.props as VisionCardProps;
 ---
 
 <div
-    class="relative h-[400px] rounded-2xl overflow-hidden group transition-transform hover:cursor-pointer duration-300 hover:scale-105"
+    class="relative h-[32rem] rounded-2xl overflow-hidden duration-300 border border-slate-500"
 >
     <img
         src={thumbnail.src}
@@ -16,7 +16,7 @@ const { thumbnail, text } = Astro.props as VisionCardProps;
     />
 
     <div class="absolute bg-black opacity-80 w-full h-full top-0"></div>
-    <div class="absolute bg-primary-500 w-full h-full top-0 mix-blend-overlay">
+    <div class="absolute bg-primary-500 w-full h-full top-0 mix-blend-color">
     </div>
 
     <div class="absolute inset-0 flex items-center justify-center p-4">
