@@ -24,6 +24,7 @@ import BlogDecoreImg from "@/assets/images/wave-line-2.png";
 import TedxDecoreImg from "@/assets/images/wave-line-3.png";
 import QuoteDecore from "@/assets/images/wave-line-4.png";
 import TedxImg from "@/assets/images/Tedx.png";
+import EngBuildImg from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
 
 const allEvents = await getCollection("event");
 const allTalks = await getCollection("watch");
@@ -40,9 +41,16 @@ const authorMap = Object.fromEntries(
 <Layout title="TEDx KMUTT">
     <div class="space-y-80">
         <div
-            class="bg-gray-400 flex justify-center items-center h-[60vh] m-2 p-8 rounded-3xl"
+            class="relative bg-gray-400 flex justify-center items-center h-[60vh] m-2 p-8 rounded-3xl overflow-clip"
         >
-            <div class="max-w-screen-md text-center">
+            <img
+                src={EngBuildImg.src}
+                alt="Engineering Building"
+                class="absolute top-0 left-0 w-full h-full inset-0 object-cover"
+            />
+            <div class="absolute bg-black opacity-50 w-full h-full top-0"></div>
+
+            <div class="max-w-screen-md text-center z-10">
                 <p class="text-primary-500 font-bold mb-6">
                     Ideas worth spreading
                 </p>
