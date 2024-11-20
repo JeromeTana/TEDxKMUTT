@@ -8,7 +8,7 @@ interface Props {
 const { blog, author } = Astro.props as Props;
 ---
 
-<div class="text-white p-4 rounded-lg space-y-3">
+<div class="text-white rounded-lg space-y-3">
     <div class="relative rounded-2xl overflow-hidden">
         <img
             src={blog.data.thumbnail.src}
