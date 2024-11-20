@@ -49,7 +49,7 @@ const authorMap = Object.fromEntries(
                 alt="Engineering Building"
                 class="absolute top-0 left-0 w-full h-full inset-0 object-cover"
             />
-            <div class="absolute bg-black opacity-50 w-full h-full top-0"></div>
+            <div class="absolute bg-black opacity-60 w-full h-full top-0"></div>
 
             <div class="max-w-screen-md text-center z-10">
                 <p data-aos="fade-up" class="text-primary-500 font-bold mb-6">
@@ -69,9 +69,15 @@ const authorMap = Object.fromEntries(
                         Technology Thonburi
                     </p>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="600">
-                    <Button href="">Watch talks</Button>
-                    <Button href="" variant="accent">Read blogs</Button>
+                <div
+                    data-aos="fade-up"
+                    data-aos-delay="600"
+                    class="flex justify-center gap-2"
+                >
+                    <Button href={`/${lang}/watch`}>Watch talks</Button>
+                    <Button href={`/${lang}/read`} variant="accent">
+                        Read blogs
+                    </Button>
                 </div>
             </div>
         </div>
@@ -124,7 +130,7 @@ const authorMap = Object.fromEntries(
                     <div slot="headline">
                         Ideas in <span class="c-underline">Action</span> at KMUTT
                     </div>
-                    <Button>Getting to know us</Button>
+                    <Button href={`/${lang}/about`}>Getting to know us</Button>
                 </Section>
             </div>
         </Container>
@@ -180,7 +186,10 @@ const authorMap = Object.fromEntries(
                         <div slot="headline">
                             What is <span class="c-underline">TEDx?</span>
                         </div>
-                        <Button>Explore more of TEDx</Button>
+                        <Button
+                            href="https://www.ted.com/about/programs-initiatives/tedx-program"
+                            target="_blank">Explore more of TEDx</Button
+                        >
                     </Section>
                     <img
                         src={TedxImg.src}
@@ -255,7 +264,9 @@ const authorMap = Object.fromEntries(
                         ))
                     }
                 </div>
-                <Button>All talks</Button>
+                <div class="flex justify-end mt-8">
+                    <Button href={`/${lang}/watch`}>All talks</Button>
+                </div>
             </Container>
         </div>
         <div class="relative">
@@ -279,7 +290,7 @@ const authorMap = Object.fromEntries(
                     class="grid grid-cols-2 lg:grid-cols-3 gap-y-12"
                 >
                     {
-                        allReadings.map((reading, index) => {
+                        allReadings.slice(0, 6).map((reading, index) => {
                             const author = authorMap[reading.data.author.id];
                             return (
                                 <a href={`/${lang}/read/${reading.slug}`}>
@@ -294,7 +305,9 @@ const authorMap = Object.fromEntries(
                         })
                     }
                 </div>
-                <Button>All blogs</Button>
+                <div class="flex justify-end mt-8">
+                    <Button href={`/${lang}/read`}>All blogs</Button>
+                </div>
             </Container>
             <img
                 src={BlogDecoreImg.src}

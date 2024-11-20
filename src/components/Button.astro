@@ -8,6 +8,7 @@ const {
     disabled = false,
     icon = "",
     isIconRight = false,
+    target = "_blank",
 } = Astro.props;
 
 const variantClasses: { [key: string]: string } = {
@@ -26,7 +27,7 @@ const buttonClasses = `
 
 {
     href ? (
-        <a href={href} class={buttonClasses}>
+        <a href={href} target={target} class={buttonClasses}>
             {icon && !isIconRight && <Icon name={icon} class="mr-2" />}
             <slot />
             {icon && isIconRight === "right" && (
