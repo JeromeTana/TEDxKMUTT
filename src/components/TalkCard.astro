@@ -12,7 +12,7 @@ interface Props {
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { talk } = Astro.props;
+const { talk, ...props } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/images/talks/2016/*.{jpeg,jpg,png,gif}"
 );
@@ -25,6 +25,7 @@ if (!images[talk.thumbnail.src]) {
 ---
 
 <div
+    {...props}
     class="group relative flex flex-col justify-end h-[28rem] pb-6 px-4 rounded-2xl overflow-clip"
 >
     <Icon
