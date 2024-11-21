@@ -1,0 +1,51 @@
+---
+import EventCard from "./EventCard.astro";
+
+const { allEvents } = Astro.props;
+---
+
+<div data-aos="fade-up" data-aos-delay="200" class="swiper-event flex gap-2">
+    <div class="swiper-wrapper">
+        {
+            allEvents.map((event) => (
+                <EventCard
+                    data-aos="fade-up"
+                    event={event.data}
+                    className="swiper-slide"
+                />
+            ))
+        }
+    </div>
+    <div class="swiper-button-prev xl:-translate-x-28"></div>
+    <div class="swiper-button-next xl:translate-x-28"></div>
+    <script>
+        import Swiper from "swiper";
+        import { Navigation, Pagination } from "swiper/modules";
+
+        const swiperOptions = {
+            modules: [Navigation, Pagination],
+            slidesPerView: 1.1,
+            spaceBetween: 10,
+            speed: 600,
+            grabCursor: true,
+            mousewheelControl: true,
+            keyboardControl: true,
+            breakpoints: {
+                640: {
+                    // slidesPerView: 2.3,
+                },
+                768: {
+                    slidesPerView: 1.5,
+                },
+                1024: {
+                    slidesPerView: 1.8,
+                },
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        };
+        const swiper = new Swiper(".swiper-event", swiperOptions);
+    </script>
+</div>

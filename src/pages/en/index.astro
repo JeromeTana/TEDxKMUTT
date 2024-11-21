@@ -25,9 +25,11 @@ import TedxDecoreImg from "@/assets/images/wave-line-3.png";
 import QuoteDecore from "@/assets/images/wave-line-4.png";
 import TedxImg from "@/assets/images/Tedx.png";
 import EngBuildImg from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
-import SwiperTalkCard from "@/components/SwiperTalkCard.astro";
+import SwiperTalk from "@/components/SwiperTalk.astro";
+import SwiperEvent from "@/components/SwiperEvent.astro";
 
 const allEvents = await getCollection("event");
+const allTalks = await getCollection("watch");
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -220,25 +222,7 @@ const authorMap = Object.fromEntries(
                         A <span class="c-underline">Legacy</span> of Inspiration
                     </div>
                 </Section>
-                <div
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                    class="swiper-event flex gap-2"
-                >
-                    <div class="swiper-wrapper">
-                        {
-                            allEvents.map((event) => (
-                                <EventCard
-                                    data-aos="fade-up"
-                                    event={event.data}
-                                    className="swiper-slide"
-                                />
-                            ))
-                        }
-                    </div>
-                    <div class="swiper-button-prev xl:-translate-x-28"></div>
-                    <div class="swiper-button-next xl:translate-x-28"></div>
-                </div>
+                <SwiperEvent allEvents={allEvents} />
             </Container>
             <img
                 src={EventDecoreImg.src}
@@ -257,7 +241,7 @@ const authorMap = Object.fromEntries(
                         Ideas That <span class="c-underline">Resonate</span>
                     </div>
                 </Section>
-                <SwiperTalkCard />
+                <SwiperTalk allTalks={allTalks} />
                 <div class="flex justify-end mt-8">
                     <Button href={`/${lang}/watch`}>
                         {t("home.tedx.more")}
@@ -338,39 +322,11 @@ const authorMap = Object.fromEntries(
         }
     </style>
     <script>
-        import Swiper from "swiper";
-        import { Navigation, Pagination } from "swiper/modules";
-
         import AOS from "aos";
         import "aos/dist/aos.css";
         import "swiper/css";
         import "swiper/css/navigation";
         import "swiper/css/pagination";
-
-        const swiperOptions = {
-            modules: [Navigation, Pagination],
-            slidesPerView: 1.1,
-            spaceBetween: 10,
-            speed: 1000,
-            grabCursor: true,
-            mousewheelControl: true,
-            keyboardControl: true,
-            breakpoints: {
-                640: {
-                    // slidesPerView: 2.3,
-                },
-                768: {
-                    slidesPerView: 1.5,
-                },
-                1024: {
-                    slidesPerView: 1.8,
-                },
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        };
 
         AOS.init({
             offset: 120,
@@ -378,7 +334,5 @@ const authorMap = Object.fromEntries(
             easing: "ease-in-out",
             once: true,
         });
-
-        const swiper = new Swiper(".swiper-event", swiperOptions);
     </script>
 </Layout>
