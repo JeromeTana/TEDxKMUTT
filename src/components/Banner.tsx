@@ -16,7 +16,7 @@ const Banner: React.FC<Props> = ({ tag, title, description, cover }) => {
                     className="absolute top-0 left-0 w-full h-full object-cover"
                 />
                 <div className="absolute bg-black opacity-80 w-full h-full top-0"></div>
-                <div className="absolute bg-primary-500 w-full h-full top-0 mix-blend-overlay"></div>
+                <div className="absolute bg-primary-500 w-full h-full top-0 mix-blend-color"></div>
 
                 <div className="relative max-w-[48rem] px-4 text-center m-auto space-y-4 md:space-y-6">
                     <div className="space-y-3">

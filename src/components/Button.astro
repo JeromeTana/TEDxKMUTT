@@ -1,43 +1,46 @@
 ---
-import { Icon } from "astro-icon/components";
+interface Props {
+    variant?: "normal" | "accent" | "border" | "text";
+    href?: string;
+    type?: "button" | "submit" | "reset";
+    disabled?: boolean;
+    target?: "_blank" | "_self" | "_parent" | "_top";
+    className?: string;
+}
 
 const {
     variant = "normal",
-    href = null,
+    href,
     type = "button",
     disabled = false,
-    icon = "",
-    isIconRight = false,
+    target = "_self",
+    className,
 } = Astro.props;
 
 const variantClasses: { [key: string]: string } = {
-    normal: "bg-primary-500 text-white hover:bg-primary-600",
+    normal: "bg-primary-500 border border-[#FF93A6] text-white hover:bg-primary-600",
     accent: "bg-white text-primary-500 hover:bg-gray-200",
-    border: "border-2 border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white group-hover:border-white group-hover:bg-white group-hover:text-primary-500",
+    border: "border border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white group-hover:border-white group-hover:bg-white group-hover:text-primary-500",
     text: "text-primary-500 hover:underline",
 };
 
 const buttonClasses = `
-  px-4 py-2 rounded-full font-bold duration-150 inline-flex items-center 
+  px-4 py-1.5 rounded-full font-bold duration-200 inline-flex items-center
   ${variantClasses[variant]} 
-  ${disabled ? "opacity-50 cursor-not-allowed" : ""}
+  ${disabled ? "opacity-50 cursor-not-allowed" : ""} 
+  ${className}
+
 `;
 ---
 
 {
     href ? (
-        <a href={href} class={buttonClasses}>
-            {icon && !isIconRight && <Icon name={icon} class="mr-2" />}
+        <a href={href} target={target} class={buttonClasses}>
             <slot />
-            {icon && isIconRight === "right" && (
-                <Icon name={icon} class="ml-2" />
-            )}
         </a>
     ) : (
         <button type={type} class={buttonClasses} disabled={disabled}>
-            {icon && !isIconRight && <Icon name={icon} class="mr-2" />}
             <slot />
-            {icon && isIconRight && <Icon name={icon} class="ml-2" />}
         </button>
     )
 }

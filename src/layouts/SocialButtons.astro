@@ -10,8 +10,8 @@ interface Props {
 const { facebookUrl, xUrl, linkedinUrl } = Astro.props;
 ---
 
-<div class="flex gap-2">
-    <Button variant="accent" href={facebookUrl} class="mr-2">Facebook Share</Button>
-    <Button variant="accent" href={xUrl} class="mr-2">X Share</Button>
+<div class="flex gap-2 space-x-2">
+    <Button variant="accent" href={facebookUrl}>Facebook Share</Button>
+    <Button variant="accent" href={xUrl}>X Share</Button>
     <Button variant="accent" href={linkedinUrl}>LinkedIn Share</Button>
 </div>
