@@ -1,14 +1,20 @@
 ---
-import { Icon } from "astro-icon/components";
+interface Props {
+    variant?: "normal" | "accent" | "border" | "text";
+    href?: string;
+    type?: "button" | "submit" | "reset";
+    disabled?: boolean;
+    target?: "_blank" | "_self" | "_parent" | "_top";
+    class?: string;
+}
 
 const {
     variant = "normal",
-    href = null,
+    href,
     type = "button",
     disabled = false,
-    icon = "",
-    isIconRight = false,
-    target = "_blank",
+    target = "_self",
+    class: className,
 } = Astro.props;
 
 const variantClasses: { [key: string]: string } = {
@@ -21,24 +27,20 @@ const variantClasses: { [key: string]: string } = {
 const buttonClasses = `
   px-4 py-1.5 rounded-full font-bold duration-200 inline-flex items-center
   ${variantClasses[variant]} 
-  ${disabled ? "opacity-50 cursor-not-allowed" : ""}
+  ${disabled ? "opacity-50 cursor-not-allowed" : ""} 
+  ${className}
+
 `;
 ---
 
 {
     href ? (
         <a href={href} target={target} class={buttonClasses}>
-            {icon && !isIconRight && <Icon name={icon} class="mr-2" />}
             <slot />
-            {icon && isIconRight === "right" && (
-                <Icon name={icon} class="ml-2" />
-            )}
         </a>
     ) : (
         <button type={type} class={buttonClasses} disabled={disabled}>
-            {icon && !isIconRight && <Icon name={icon} class="mr-2" />}
             <slot />
-            {icon && isIconRight && <Icon name={icon} class="ml-2" />}
         </button>
     )
 }
