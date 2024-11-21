@@ -8,7 +8,7 @@ const { thumbnail, text, ...props } = Astro.props as VisionCardProps;
 
 <div {...props}>
     <div
-        class="relative h-[32rem] rounded-2xl overflow-hidden border border-slate-500 duration-200 shadow-[0_0_1rem_0_rgba(0,0,0,0.3)] hover:shadow-gray-500"
+        class="relative h-72 rounded-2xl overflow-hidden border border-gray-500 duration-200 shadow-[0_0_1rem_0_rgba(0,0,0,0.3)] hover:shadow-gray-500 md:h-[32rem]"
     >
         <img
             src={thumbnail.src}
