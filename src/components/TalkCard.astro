@@ -27,7 +27,7 @@ if (!images[talk.thumbnail.src]) {
 
 <div {...props} class={className}>
     <div
-        class="group relative flex flex-col justify-end h-[28rem] pb-6 px-4 rounded-2xl overflow-clip"
+        class="group relative flex flex-col justify-end h-80 sm:h-96 pb-6 px-4 rounded-2xl overflow-clip"
     >
         <Icon
             name="mdi:play"
@@ -50,7 +50,7 @@ if (!images[talk.thumbnail.src]) {
         <div class="z-20">
             <div class="translate-y-36 duration-200 group-hover:translate-y-0">
                 <p class="text-gray-300 text-sm mb-2">{talk.speaker.name}</p>
-                <h2 class="text-2xl font-bold">{talk.title}</h2>
+                <h2 class="text-lg font-bold">{talk.title}</h2>
                 <p
                     class="text-gray-300 my-3 leading-7 line-clamp-5 opacity-0 duration-100 group-hover:opacity-100"
                 >
