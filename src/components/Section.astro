@@ -5,10 +5,10 @@ const { tag, description, style } = Astro.props;
 <div data-aos="fade-up" class={style}>
     <div class="space-y-4 mb-10">
         <small class="text-primary-500 font-bold">{tag}</small>
-        <h2 class="text-5xl font-semibold">
+        <h2 class="text-4xl font-semibold">
             <slot name="headline" />
         </h2>
-        <p class="whitespace-pre-line max-w-[36rem] md:m-auto text-xl leading-8 text-gray-50">
+        <p class="whitespace-pre-line max-w-[36rem] md:m-auto text-lg leading-8 text-gray-50">
             {description}
         </p>
     </div>
