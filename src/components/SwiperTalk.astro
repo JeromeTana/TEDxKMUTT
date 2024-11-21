@@ -1,8 +1,7 @@
 ---
-import { getCollection } from "astro:content";
 import TalkCard from "@/components/TalkCard.astro";
 
-const allTalks = await getCollection("watch");
+const { allTalks } = Astro.props;
 ---
 
 <div
@@ -55,35 +54,3 @@ const allTalks = await getCollection("watch");
 
     const swiper = new Swiper(".swiper-talks", swiperOptions);
 </script>
-
-<!-- 
-    const swiperOptions = {
-        modules: [Autoplay, Navigation, Pagination],
-        loop: true,
-        autoplay: {
-            delay: 1,
-            disableOnInteraction: false,
-        },
-        slidesPerView: 1.2,
-        spaceBetween: 10,
-        speed: 5000,
-        grabCursor: true,
-        mousewheelControl: true,
-        keyboardControl: true,
-        breakpoints: {
-            640: {
-                slidesPerView: 2.3,
-            },
-            768: {
-                slidesPerView: 2.3,
-            },
-            1024: {
-                slidesPerView: 3.5,
-            },
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    };
- -->
