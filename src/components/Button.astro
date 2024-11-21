@@ -5,7 +5,7 @@ interface Props {
     type?: "button" | "submit" | "reset";
     disabled?: boolean;
     target?: "_blank" | "_self" | "_parent" | "_top";
-    class?: string;
+    className?: string;
 }
 
 const {
@@ -14,7 +14,7 @@ const {
     type = "button",
     disabled = false,
     target = "_self",
-    class: className,
+    className,
 } = Astro.props;
 
 const variantClasses: { [key: string]: string } = {
