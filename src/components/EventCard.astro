@@ -26,7 +26,7 @@ if (!images[event.thumbnail.src]) {
 ---
 
 <div {...props} class={className}>
-    <a href={event.url} target="_blank" class="group block">
+    <div class="group block">
         <div
             class="relative border border-gray-500 rounded-3xl px-4 pb-8 pt-32 space-y-6 overflow-hidden"
         >
@@ -52,7 +52,9 @@ if (!images[event.thumbnail.src]) {
                     {event.description}
                 </p>
             </div>
-            <Button variant="border">{t("view.details")}</Button>
+            <Button href={event.url} variant="border"
+                >{t("view.details")}</Button
+            >
         </div>
-    </a>
+    </div>
 </div>
