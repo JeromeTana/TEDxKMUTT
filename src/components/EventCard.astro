@@ -5,12 +5,13 @@ import type { Event } from "@/types/Event";
 
 interface Props {
     event: Event;
+    className?: string;
 }
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { event, ...props } = Astro.props;
+const { event, className, ...props } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/images/events/2016/*.{jpeg,jpg,png,gif}"
@@ -23,8 +24,8 @@ if (!images[event.thumbnail.src]) {
 }
 ---
 
-<div {...props}>
-    <a href={event.url} target="_blank" class="group block w-[40rem]">
+<div {...props} class={className}>
+    <a href={event.url} target="_blank" class="group block">
         <div
             class="relative border border-gray-500 rounded-3xl p-8 pt-32 space-y-6 overflow-hidden"
         >
