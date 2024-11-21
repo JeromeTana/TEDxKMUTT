@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
-import { getLangFromUrl } from "@/i18n/utils";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 import Button from "@/components/Button.astro";
 import EventCard from "@/components/EventCard.astro";
@@ -30,6 +30,8 @@ import SwiperTalkCard from "@/components/SwiperTalkCard.astro";
 const allEvents = await getCollection("event");
 
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const allReadings = await getCollection("read");
 
 const allAuthors = await getCollection("author");
@@ -55,7 +57,7 @@ const authorMap = Object.fromEntries(
                     data-aos="fade-up"
                     class="text-primary-500 font-bold mb-3 md:mb-6"
                 >
-                    Ideas worth spreading
+                    {t("home.hero.tag")}
                 </p>
                 <div class="mb-11">
                     <h1
@@ -63,16 +65,14 @@ const authorMap = Object.fromEntries(
                         data-aos-delay="200"
                         class="text-4xl md:text-6xl font-semibold mb-2"
                     >
-                        Reimagining the Future, <br />One Talk at a Time
+                        {t("home.hero.title")}
                     </h1>
                     <p
                         data-aos="fade-up"
                         data-aos-delay="400"
                         class="text-lg md:text-xl"
                     >
-                        Experience thought-provoking talks from visionary
-                        thinkers and innovators at King Mongkut's University of
-                        Technology Thonburi
+                        {t("home.hero.description")}
                     </p>
                 </div>
                 <div
@@ -82,20 +82,22 @@ const authorMap = Object.fromEntries(
                 >
                     <Button href={`/${lang}/watch`}>
                         <Icon name="mdi:play" class="mr-2" />
-                        Watch talks
+                        {t("home.hero.watch")}
                     </Button>
                     <Button href={`/${lang}/read`} variant="accent">
                         <Icon
                             name="mdi:book-open-variant-outline"
                             class="mr-2"
                         />
-                        Read blogs
+                        {t("home.hero.read")}
                     </Button>
                 </div>
             </div>
         </div>
 
-        <div class="relative !mt-16 !mb-32 md:!mt-48 md:!mb-96 py-32 text-center">
+        <div
+            class="relative !mt-16 !mb-32 md:!mt-48 md:!mb-96 py-32 text-center"
+        >
             <div class="relative max-w-screen-lg m-auto">
                 <img
                     src={QuoteL.src}
@@ -137,13 +139,15 @@ const authorMap = Object.fromEntries(
                     class="md:w-1/2 aspect-video rounded-xl object-cover"
                 />
                 <Section
-                    tag="About us"
-                    description=`TEDx KMUTT brings cutting-edge ideas to King Mongkut's University of Technology Thonburi. We showcase innovative thinkers from our community and beyond, fostering intellectual growth and inspiration`
+                    tag={t("home.about.tag")}
+                    description={t("home.about.description")}
                 >
                     <div slot="headline">
                         Ideas in <span class="c-underline">Action</span> at KMUTT
                     </div>
-                    <Button href={`/${lang}/about`}>Getting to know us</Button>
+                    <Button href={`/${lang}/about`}>
+                        {t("home.about.more")}
+                    </Button>
                 </Section>
             </div>
         </Container>
@@ -153,19 +157,19 @@ const authorMap = Object.fromEntries(
                 <VisionCard
                     data-aos="fade-up"
                     thumbnail={Audience}
-                    text="Innovation"
+                    text={t("home.vision.1")}
                 />
                 <VisionCard
                     data-aos="fade-up"
                     data-aos-delay="200"
                     thumbnail={StairImg}
-                    text="Collaboration"
+                    text={t("home.vision.2")}
                 />
                 <VisionCard
                     data-aos="fade-up"
                     data-aos-delay="400"
                     thumbnail={StageImg}
-                    text="Impact"
+                    text={t("home.vision.3")}
                 />
             </div>
         </Container>
@@ -177,16 +181,8 @@ const authorMap = Object.fromEntries(
                     class="flex flex-col-reverse justify-between gap-10 md:flex-row"
                 >
                     <Section
-                        tag="TEDx"
-                        description=`In the spirit of discovering and spreading ideas, TED has created a program called TEDx.
-
-                            TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDx[name],
-                            
-                            where x = independently organized TED event. At our TEDx[name] event,
-                            
-                            TED Talks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program,
-                            
-                            but individual TEDx events, including ours, are self-organized.`
+                        tag={t("home.tedx.tag")}
+                        description={t("home.tedx.description")}
                     >
                         <div slot="headline">
                             What is <span class="c-underline">TEDx?</span>
@@ -195,7 +191,7 @@ const authorMap = Object.fromEntries(
                             href="https://www.ted.com/about/programs-initiatives/tedx-program"
                             target="_blank"
                         >
-                            Explore more of TEDx &nbsp;
+                            {t("home.tedx.more")} &nbsp;
                             <Icon name="mdi:open-in-new" />
                         </Button>
                     </Section>
@@ -216,8 +212,8 @@ const authorMap = Object.fromEntries(
         <div class="relative">
             <Container>
                 <Section
-                    tag="Our past journeys"
-                    description=`Explore our previous events that have illuminated groundbreaking research, visionary projects, and transformative ideas born at KMUTT and beyond`
+                    tag={t("home.events.tag")}
+                    description={t("home.events.description")}
                     style="md:text-center mb-16"
                 >
                     <div slot="headline">
@@ -253,8 +249,8 @@ const authorMap = Object.fromEntries(
         <div class="bg-[#131313] py-32">
             <Container>
                 <Section
-                    tag="Highlighted talks"
-                    description=`Watch standout presentations from KMUTT researchers, alumni, and invited experts that exemplify our commitment to advancing knowledge and technology`
+                    tag={t("home.talks.tag")}
+                    description={t("home.talks.description")}
                     style="md:text-center mb-16"
                 >
                     <div slot="headline">
@@ -263,15 +259,17 @@ const authorMap = Object.fromEntries(
                 </Section>
                 <SwiperTalkCard />
                 <div class="flex justify-end mt-8">
-                    <Button href={`/${lang}/watch`}>All talks</Button>
+                    <Button href={`/${lang}/watch`}>
+                        {t("home.tedx.more")}
+                    </Button>
                 </div>
             </Container>
         </div>
         <div class="relative">
             <Container>
                 <Section
-                    tag="Read blogs"
-                    description=`Delve deeper into TEDx KMUTT talks with expert analyses, speaker interviews, and explorations of how these ideas are shaping our future`
+                    tag={t("home.read.tag")}
+                    description={t("home.read.description")}
                     style="md:text-center"
                 >
                     <div slot="headline">
@@ -301,7 +299,8 @@ const authorMap = Object.fromEntries(
                     }
                 </div>
                 <div class="flex justify-end mt-8">
-                    <Button href={`/${lang}/read`}>All blogs</Button>
+                    <Button href={`/${lang}/read`}>{t("home.read.more")}</Button
+                    >
                 </div>
             </Container>
             <img
