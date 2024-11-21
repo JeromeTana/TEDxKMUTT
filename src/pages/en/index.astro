@@ -2,11 +2,9 @@
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
 import { getLangFromUrl } from "@/i18n/utils";
-import "aos/dist/aos.css";
 
 import Button from "@/components/Button.astro";
 import EventCard from "@/components/EventCard.astro";
-import TalkCard from "@/components/TalkCard.astro";
 import ContactForm from "@/components/ContactForm.astro";
 import BlogItem from "@/components/BlogItem.astro";
 import VisionCard from "@/components/VisionCard.astro";
@@ -27,9 +25,9 @@ import TedxDecoreImg from "@/assets/images/wave-line-3.png";
 import QuoteDecore from "@/assets/images/wave-line-4.png";
 import TedxImg from "@/assets/images/Tedx.png";
 import EngBuildImg from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
+import SwiperTalkCard from "@/components/SwiperTalkCard.astro";
 
 const allEvents = await getCollection("event");
-const allTalks = await getCollection("watch");
 
 const lang = getLangFromUrl(Astro.url);
 const allReadings = await getCollection("read");
@@ -231,19 +229,32 @@ const authorMap = Object.fromEntries(
                     description=`Explore our previous events that have illuminated
                     groundbreaking research, visionary projects, and
                     transformative ideas born at KMUTT and beyond`
-                    style="text-center"
+                    style="text-center mb-16"
                 >
                     <div slot="headline">
                         A <span class="c-underline">Legacy</span> of Inspiration
                     </div>
                 </Section>
-                <div data-aos="fade-up" data-aos-delay="200" class="flex gap-2">
-                    {
-                        allEvents.map((event) => (
-                            <EventCard data-aos="fade-up" event={event.data} />
-                        ))
-                    }
+                <div
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                    class="swiper-event flex gap-2"
+                >
+                    <div class="swiper-wrapper">
+                        {
+                            allEvents.map((event) => (
+                                <EventCard
+                                    data-aos="fade-up"
+                                    event={event.data}
+                                    className="swiper-slide"
+                                />
+                            ))
+                        }
+                    </div>
+                       <div class="swiper-button-prev absolute"></div>
+                <div class="swiper-button-next"></div>
                 </div>
+             
             </Container>
             <img
                 src={EventDecoreImg.src}
@@ -258,27 +269,13 @@ const authorMap = Object.fromEntries(
                     description=`Watch standout presentations from KMUTT researchers, alumni, 
                     and invited experts that exemplify our commitment to advancing
                      knowledge and technology`
-                    style="text-center"
+                    style="text-center mb-16"
                 >
                     <div slot="headline">
                         Ideas That <span class="c-underline">Resonate</span>
                     </div>
                 </Section>
-                <div
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                    class="grid grid-cols-2 md:grid-cols-3 gap-2"
-                >
-                    {
-                        allTalks.map((talk, index) => (
-                            <TalkCard
-                                data-aos="fade-up"
-                                data-aos-delay={index * 100}
-                                talk={talk.data}
-                            />
-                        ))
-                    }
-                </div>
+                <SwiperTalkCard />
                 <div class="flex justify-end mt-8">
                     <Button href={`/${lang}/watch`}>All talks</Button>
                 </div>
@@ -305,13 +302,12 @@ const authorMap = Object.fromEntries(
                     class="grid sm:grid-cols-2 lg:grid-cols-3 gap-y-12"
                 >
                     {
-                        allReadings.slice(0, 6).map((reading, index) => {
+                        allReadings.slice(0, 6).map((reading) => {
                             const author = authorMap[reading.data.author.id];
                             return (
                                 <a href={`/${lang}/read/${reading.slug}`}>
                                     <BlogItem
                                         data-aos="fade-up"
-                                        data-aos-delay={index * 150}
                                         blog={reading}
                                         author={author}
                                     />
@@ -334,6 +330,10 @@ const authorMap = Object.fromEntries(
     </div>
 
     <style is:global>
+        :root {
+    --swiper-theme-color: #000;
+}
+
         .c-underline {
             position: relative;
         }
@@ -349,14 +349,54 @@ const authorMap = Object.fromEntries(
             border-radius: 50%;
             rotate: -2deg;
         }
+        .swiper-container-free-mode > .swiper-wrapper {
+            transition-timing-function: linear;
+        }
+        
+
     </style>
     <script>
+        import Swiper from "swiper";
+        import { Navigation, Pagination } from "swiper/modules";
+
         import AOS from "aos";
+        import "aos/dist/aos.css";
+        import "swiper/css";
+        import "swiper/css/navigation";
+        import "swiper/css/pagination";
+
+        const swiperOptions = {
+            modules: [Navigation, Pagination],
+            slidesPerView: 1.2,
+            spaceBetween: 10,
+            speed: 1000,
+            grabCursor: true,
+            mousewheelControl: true,
+            keyboardControl: true,
+            breakpoints: {
+                640: {
+                    slidesPerView: 2.3,
+                },
+                768: {
+                    slidesPerView: 2.3,
+                },
+                1024: {
+                    slidesPerView: 1.8,
+                },
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        };
+
         AOS.init({
             offset: 120,
             duration: 500,
             easing: "ease-in-out",
             once: true,
         });
+
+        const swiper = new Swiper(".swiper-event", swiperOptions);
     </script>
 </Layout>
