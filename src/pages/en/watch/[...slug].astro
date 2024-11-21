@@ -1,0 +1,77 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getEntry } from "astro:content";
+import { YouTube } from "astro-embed";
+import Container from "@/components/Container.astro";
+import SocialButtons from "@/layouts/SocialButtons.astro";
+import { getCollection } from "astro:content";
+import TalkCard from "@/components/TalkCard.astro";
+
+const { slug } = Astro.params;
+
+if (slug === undefined) {
+    throw new Error("Slug is required");
+}
+const entry = await getEntry("watch", slug);
+
+if (entry === undefined) {
+    return Astro.redirect("/404");
+}
+
+const { url, event, title, description, speaker } = entry.data;
+
+const allTalks = await getCollection("watch");
+---
+
+<Layout title="Watch · TEDxKMUTT">
+    <YouTube id={url} />
+    <Container>
+        <div class="flex flex-col md:flex-row gap-2 py-4">
+            <div class="w-full md:w-3/5 space-y-6 p-6 bg-[#1E1E1E] rounded-2xl">
+                <div class="space-y-2">
+                    <small class="text-primary-500 font-bold">
+                        {event.id}
+                    </small>
+                    <h1 class="font-bold text-2xl">{title}</h1>
+                </div>
+                <p class="leading-7">{description}</p>
+                <!-- <SocialButtons /> -->
+            </div>
+            <div class="w-full md:w-2/5 space-y-6 p-6 bg-[#1E1E1E] rounded-2xl">
+                <div class="space-y-2">
+                    <small class="text-primary-500 font-bold">Speaker</small>
+                    <h2 class="font-bold text-2xl">
+                        {speaker.name}
+                    </h2>
+                </div>
+                <p class="leading-7">{speaker.bio}</p>
+            </div>
+        </div>
+        <div class="mt-16">
+            <p class="text-xl font-bold mb-8">View other talks</p>
+            <div
+                class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 gap-y-4"
+            >
+                {
+                    allTalks.map((talk, index) => (
+                        <TalkCard
+                            data-aos="fade-up"
+                            data-aos-delay={index * 100}
+                            talk={talk.data}
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </Container>
+    <style>
+        lite-youtube {
+            max-width: 100vw;
+            height: 30vh;
+
+            @media (min-width: 768px) {
+                height: 75vh;
+            }
+        }
+    </style>
+</Layout>
