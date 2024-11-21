@@ -2,6 +2,7 @@
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import Button from "./Button.astro";
 import type { Event } from "@/types/Event";
+import { Image } from "astro:assets";
 
 interface Props {
     event: Event;
@@ -30,8 +31,8 @@ if (!images[event.thumbnail.src]) {
             class="relative border border-gray-500 rounded-3xl p-8 pt-32 space-y-6 overflow-hidden"
         >
             <div>
-                <img
-                    src={event.thumbnail.src}
+                <Image
+                    src={images[event.thumbnail.src]()}
                     alt=""
                     class="absolute top-0 left-0 w-full h-full object-cover -z-20"
                 />
