@@ -51,7 +51,10 @@ const authorMap = Object.fromEntries(
             <div class="absolute bg-black opacity-60 w-full h-full top-0"></div>
 
             <div class="max-w-screen-md text-center z-10">
-                <p data-aos="fade-up" class="text-primary-500 font-bold mb-6">
+                <p
+                    data-aos="fade-up"
+                    class="text-primary-500 font-bold mb-3 md:mb-6"
+                >
                     Ideas worth spreading
                 </p>
                 <div class="mb-11">
@@ -65,7 +68,7 @@ const authorMap = Object.fromEntries(
                     <p
                         data-aos="fade-up"
                         data-aos-delay="400"
-                        class="text-lg md:text-2xl"
+                        class="text-lg md:text-xl"
                     >
                         Experience thought-provoking talks from visionary
                         thinkers and innovators at King Mongkut's University of
@@ -98,7 +101,7 @@ const authorMap = Object.fromEntries(
                     src={QuoteL.src}
                     data-aos="fade-up"
                     alt="Quote_L"
-                    class="absolute bottom-16 left-0 ml-8 w-14 md:w-24"
+                    class="absolute bottom-14 md:bottom-16 left-0 ml-2 w-12 md:w-24"
                 />
                 <p
                     data-aos="fade-up"
@@ -112,13 +115,13 @@ const authorMap = Object.fromEntries(
                     src={QuoteR.src}
                     data-aos="fade-up"
                     alt="Quote_R"
-                    class="absolute top-16 right-0 mr-8 w-14 md:w-24"
+                    class="absolute top-16 right-0 mr-2 w-12 md:w-24"
                 />
             </div>
             <img
                 src={QuoteDecore.src}
                 alt=""
-                class="absolute top-1/2 -translate-y-1/3 md:w-full -z-10"
+                class="absolute top-1/2 -translate-y-2/3 md:-translate-y-1/3 left-1/2 md:left-0 max-w-screen-2xl md:max-w-full -translate-x-1/2 md:translate-x-0 md:w-full -z-10"
             />
         </div>
 
@@ -135,11 +138,7 @@ const authorMap = Object.fromEntries(
                 />
                 <Section
                     tag="About us"
-                    description=`TEDx KMUTT brings cutting-edge ideas to King
-                            Mongkut's University of Technology Thonburi. We
-                            showcase innovative thinkers from our community and
-                            beyond, fostering intellectual growth and
-                            inspiration`
+                    description=`TEDx KMUTT brings cutting-edge ideas to King Mongkut's University of Technology Thonburi. We showcase innovative thinkers from our community and beyond, fostering intellectual growth and inspiration`
                 >
                     <div slot="headline">
                         Ideas in <span class="c-underline">Action</span> at KMUTT
@@ -175,27 +174,19 @@ const authorMap = Object.fromEntries(
                 <div
                     data-aos="fade-up"
                     data-aos-duration="1000"
-                    class="flex flex-col justify-between gap-12 lg:flex-row"
+                    class="flex flex-col justify-between gap-12 md:flex-row"
                 >
                     <Section
                         tag="TEDx"
-                        description=`In the spirit of discovering and spreading ideas,
-                            TED has created a program called TEDx.
+                        description=`In the spirit of discovering and spreading ideas, TED has created a program called TEDx.
 
-                            TEDx is a program of local, self-organized events that bring
-                            people together to share a TED-like experience. Our
-                            event is called TEDx[name],
+                            TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDx[name],
                             
-                            where x = independently
-                            organized TED event. At our TEDx[name] event,
+                            where x = independently organized TED event. At our TEDx[name] event,
                             
-                            TED Talks video and live speakers will combine to spark
-                            deep discussion and connection in a small group. The
-                            TED Conference provides general guidance for the
-                            TEDx program,
+                            TED Talks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program,
                             
-                            but individual TEDx events, including
-                            ours, are self-organized.`
+                            but individual TEDx events, including ours, are self-organized.`
                     >
                         <div slot="headline">
                             What is <span class="c-underline">TEDx?</span>
@@ -211,14 +202,14 @@ const authorMap = Object.fromEntries(
                     <img
                         src={TedxImg.src}
                         alt="TEDx"
-                        class="aspect-video lg:aspect-auto object-cover border border-gray-500 rounded-2xl duration-200 shadow-[0_0_2rem_0_rgba(0,0,0,0.3)] hover:shadow-primary-600"
+                        class="aspect-video md:aspect-auto md:w-1/2 object-cover border border-gray-500 rounded-2xl duration-200 shadow-[0_0_2rem_0_rgba(0,0,0,0.3)] hover:shadow-primary-600"
                     />
                 </div>
             </Container>
             <img
                 src={TedxDecoreImg.src}
                 alt=""
-                class="absolute top-0 -translate-y-2/3 w-full -z-10"
+                class="absolute top-0 -translate-y-2/3 md:w-full -z-10 left-1/2 md:left-0 -translate-x-1/2 max-w-screen-2xl md:max-w-full md:translate-x-0"
             />
         </div>
 
@@ -226,10 +217,8 @@ const authorMap = Object.fromEntries(
             <Container>
                 <Section
                     tag="Our past journeys"
-                    description=`Explore our previous events that have illuminated
-                    groundbreaking research, visionary projects, and
-                    transformative ideas born at KMUTT and beyond`
-                    style="text-center mb-16"
+                    description=`Explore our previous events that have illuminated groundbreaking research, visionary projects, and transformative ideas born at KMUTT and beyond`
+                    style="md:text-center mb-16"
                 >
                     <div slot="headline">
                         A <span class="c-underline">Legacy</span> of Inspiration
@@ -251,25 +240,22 @@ const authorMap = Object.fromEntries(
                             ))
                         }
                     </div>
-                       <div class="swiper-button-prev absolute"></div>
-                <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev xl:-translate-x-28"></div>
+                    <div class="swiper-button-next xl:translate-x-28"></div>
                 </div>
-             
             </Container>
             <img
                 src={EventDecoreImg.src}
                 alt=""
-                class="absolute bottom-0 translate-y-1/2 w-full -z-10"
+                class="absolute bottom-40 md:bottom-0 translate-y-1/2 md:w-full -z-10 left-1/2 md:left-0 -translate-x-1/2 max-w-screen-2xl md:max-w-full md:translate-x-0"
             />
         </div>
         <div class="bg-[#131313] py-32">
             <Container>
                 <Section
                     tag="Highlighted talks"
-                    description=`Watch standout presentations from KMUTT researchers, alumni, 
-                    and invited experts that exemplify our commitment to advancing
-                     knowledge and technology`
-                    style="text-center mb-16"
+                    description=`Watch standout presentations from KMUTT researchers, alumni, and invited experts that exemplify our commitment to advancing knowledge and technology`
+                    style="md:text-center mb-16"
                 >
                     <div slot="headline">
                         Ideas That <span class="c-underline">Resonate</span>
@@ -285,10 +271,8 @@ const authorMap = Object.fromEntries(
             <Container>
                 <Section
                     tag="Read blogs"
-                    description=`Delve deeper into TEDx KMUTT talks with expert analyses,
-                        speaker interviews, and explorations of how these ideas
-                        are shaping our future`
-                    style="text-center"
+                    description=`Delve deeper into TEDx KMUTT talks with expert analyses, speaker interviews, and explorations of how these ideas are shaping our future`
+                    style="md:text-center"
                 >
                     <div slot="headline">
                         <h2>
@@ -323,17 +307,13 @@ const authorMap = Object.fromEntries(
             <img
                 src={BlogDecoreImg.src}
                 alt=""
-                class="absolute top-0 -translate-y-1/4 w-full -z-10"
+                class="absolute top-0 -translate-y-1/4 md:w-full -z-10 left-1/2 md:left-0 -translate-x-1/2 max-w-screen-2xl md:max-w-full md:translate-x-0"
             />
         </div>
         <ContactForm />
     </div>
 
     <style is:global>
-        :root {
-    --swiper-theme-color: #000;
-}
-
         .c-underline {
             position: relative;
         }
@@ -344,7 +324,7 @@ const authorMap = Object.fromEntries(
             left: 0;
             height: 12px;
             width: 100%;
-            border: solid 2px;
+            border-top: solid 2px;
             border-color: #eb0028 transparent transparent transparent;
             border-radius: 50%;
             rotate: -2deg;
@@ -352,8 +332,11 @@ const authorMap = Object.fromEntries(
         .swiper-container-free-mode > .swiper-wrapper {
             transition-timing-function: linear;
         }
-        
 
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            color: white;
+        }
     </style>
     <script>
         import Swiper from "swiper";
@@ -367,7 +350,7 @@ const authorMap = Object.fromEntries(
 
         const swiperOptions = {
             modules: [Navigation, Pagination],
-            slidesPerView: 1.2,
+            slidesPerView: 1.1,
             spaceBetween: 10,
             speed: 1000,
             grabCursor: true,
@@ -375,10 +358,10 @@ const authorMap = Object.fromEntries(
             keyboardControl: true,
             breakpoints: {
                 640: {
-                    slidesPerView: 2.3,
+                    // slidesPerView: 2.3,
                 },
                 768: {
-                    slidesPerView: 2.3,
+                    slidesPerView: 1.5,
                 },
                 1024: {
                     slidesPerView: 1.8,
