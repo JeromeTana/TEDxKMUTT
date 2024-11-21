@@ -7,12 +7,13 @@ import type { Talk } from "@/types/Talk";
 
 interface Props {
     talk: Talk;
+    className?: string;
 }
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { talk } = Astro.props;
+const { talk, className, ...props } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/images/talks/2016/*.{jpeg,jpg,png,gif}"
 );
@@ -24,40 +25,44 @@ if (!images[talk.thumbnail.src]) {
 }
 ---
 
-<div
-    class="group relative flex flex-col justify-end h-[28rem] pb-6 px-4 rounded-2xl overflow-clip"
->
-    <Icon
-        name="mdi:play"
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-60 duration-200 group-hover:opacity-0"
-        size={80}
-    />
+<div {...props} class={className}>
     <div
-        class="absolute -z-10 w-full h-3/4 bottom-0 left-0 bg-gradient-to-t from-primary-500 to-[#00000000] opacity-0 duration-200 group-hover:opacity-100"
+        class="group relative flex flex-col justify-end h-[28rem] pb-6 px-4 rounded-2xl overflow-clip"
     >
-    </div>
-    <div
-        class="absolute -z-10 w-full h-3/4 bottom-0 left-0 bg-gradient-to-t from-black to-[#00000000] duration-200 group-hover:opacity-0"
-    >
-    </div>
-    <Image
-        src={images[talk.thumbnail.src]()}
-        alt={talk.title}
-        class="absolute w-full h-full top-0 left-0 -z-30 object-cover"
-    />
-
-    <div class="translate-y-36 duration-200 group-hover:translate-y-0">
-        <p class="text-gray-300 text-sm mb-2">{talk.speaker.name}</p>
-        <h2 class="text-2xl font-bold">{talk.title}</h2>
-        <p
-            class="text-gray-300 my-3 leading-7 line-clamp-5 opacity-0 duration-100 group-hover:opacity-100"
+        <Icon
+            name="mdi:play"
+            class="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-60 duration-200 group-hover:opacity-0"
+            size={80}
+        />
+        <div
+            class="absolute z-10 w-full h-3/4 bottom-0 left-0 bg-gradient-to-t from-primary-500 to-[#00000000] opacity-0 duration-200 group-hover:opacity-100"
         >
-            {talk.description}
-        </p>
-    </div>
-    <div>
-        <Button variant={"border"} icon="mdi:play">
-            {t("watch.now")}
-        </Button>
+        </div>
+        <div
+            class="absolute z-10 w-full h-3/4 bottom-0 left-0 bg-gradient-to-t from-black to-[#00000000] duration-200 group-hover:opacity-0"
+        >
+        </div>
+        <Image
+            src={images[talk.thumbnail.src]()}
+            alt={talk.title}
+            class="absolute w-full h-full top-0 left-0 bg-gray-500 object-cover"
+        />
+        <div class="z-20">
+            <div class="translate-y-36 duration-200 group-hover:translate-y-0">
+                <p class="text-gray-300 text-sm mb-2">{talk.speaker.name}</p>
+                <h2 class="text-2xl font-bold">{talk.title}</h2>
+                <p
+                    class="text-gray-300 my-3 leading-7 line-clamp-5 opacity-0 duration-100 group-hover:opacity-100"
+                >
+                    {talk.description}
+                </p>
+            </div>
+            <div>
+                <Button variant={"border"}>
+                    <Icon name="mdi:play" class="mr-2" />
+                    {t("watch.now")}
+                </Button>
+            </div>
+        </div>
     </div>
 </div>

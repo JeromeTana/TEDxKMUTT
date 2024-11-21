@@ -1,0 +1,58 @@
+---
+import TalkCard from "@/components/TalkCard.astro";
+import type { Talk } from "@/types/Talk";
+import type { InferEntrySchema } from "astro:content";
+
+const { allTalks } = Astro.props;
+---
+
+<div
+    data-aos="fade-up"
+    data-aos-delay="200"
+    class="swiper-talks swiper-container-free-mode grid grid-cols-2 md:grid-cols-3 gap-2"
+>
+    <div class="swiper-wrapper">
+        {
+            allTalks.map((talk: { data: Talk }, index: number) => (
+                <TalkCard
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100}
+                    talk={talk.data}
+                    className="swiper-slide"
+                />
+            ))
+        }
+    </div>
+</div>
+<script>
+    import Swiper from "swiper";
+    import { Autoplay } from "swiper/modules";
+
+    const swiperOptions = {
+        modules: [Autoplay],
+        loop: true,
+        autoplay: {
+            delay: 1,
+            disableOnInteraction: false,
+        },
+        slidesPerView: 1.2,
+        spaceBetween: 10,
+        speed: 5000,
+        grabCursor: true,
+        mousewheelControl: true,
+        keyboardControl: true,
+        breakpoints: {
+            640: {
+                slidesPerView: 2.3,
+            },
+            768: {
+                slidesPerView: 2.3,
+            },
+            1024: {
+                slidesPerView: 3.5,
+            },
+        },
+    };
+
+    const swiper = new Swiper(".swiper-talks", swiperOptions);
+</script>
