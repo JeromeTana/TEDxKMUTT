@@ -1,7 +1,6 @@
 ---
 import TalkCard from "@/components/TalkCard.astro";
 import type { Talk } from "@/types/Talk";
-import type { InferEntrySchema } from "astro:content";
 
 const { allTalks } = Astro.props;
 ---
@@ -13,14 +12,19 @@ const { allTalks } = Astro.props;
 >
     <div class="swiper-wrapper">
         {
-            allTalks.map((talk: { data: Talk }, index: number) => (
-                <TalkCard
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
-                    talk={talk.data}
-                    className="swiper-slide"
-                />
-            ))
+            allTalks.map(
+                (
+                    talk: { id: string; data: Talk; collection: string },
+                    index: number
+                ) => (
+                    <TalkCard
+                        data-aos="fade-up"
+                        data-aos-delay={index * 100}
+                        talk={talk}
+                        className="swiper-slide"
+                    />
+                )
+            )
         }
     </div>
 </div>

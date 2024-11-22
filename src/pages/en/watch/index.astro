@@ -19,13 +19,7 @@ const allWatching = await getCollection("watch");
         <h1 class="text-red-500">Watch</h1>
         <div class="max-w-screen-lg m-auto">
             <div class="grid grid-cols-3 gap-4">
-                {
-                    allWatching.map((watch) => (
-                        <a href={`/en/watch/${watch.id}`}>
-                            <TalkCard talk={watch.data} />
-                        </a>
-                    ))
-                }
+                {allWatching.map((watch) => <TalkCard talk={watch} />)}
             </div>
         </div>
     </main>
