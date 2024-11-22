@@ -6,37 +6,31 @@ const { data } = Astro.props;
 const { title } = data;
 ---
 
-<div class="flex gap-2">
+<div class="flex gap-2 overflow-auto">
     <Button
         variant="accent"
-        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-            Astro.url.toString()
-        )}`}
+        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.toString())}&quote=${encodeURIComponent(title)}`}
         target="_blank"
     >
         <Icon name="mdi:facebook" />&nbsp;Facebook
     </Button>
     <Button
         variant="accent"
-        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-            Astro.url.toString()
-        )}`}
+        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(Astro.url.toString())}&text=${encodeURIComponent(title)}`}
         target="_blank"
     >
         <Icon name="mdi:twitter" />&nbsp;Twitter
     </Button>
     <Button
         variant="accent"
-        href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-            Astro.url.toString()
-        )}`}
+        href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url.toString())}&title=${encodeURIComponent(title)}`}
         target="_blank"
     >
         <Icon name="mdi:linkedin" />&nbsp;LinkedIn
     </Button>
     <Button
         variant="accent"
-        href={`https://wa.me/?text=${encodeURIComponent(Astro.url.toString())}`}
+        href={`https://wa.me/?text=${encodeURIComponent(title + " " + Astro.url.toString())}`}
         target="_blank"
     >
         <Icon name="mdi:whatsapp" />&nbsp;WhatsApp
