@@ -1,0 +1,15 @@
+{
+  "title": "จะเกิดอะไรขึ้น ถ้าหุ่นยนต์มีฮอร์โมน",
+  "description": "Why are robots unable to perform effectively in outdoor real-world environment even the current robotic technologies have been shown (many times) to be clever than the humans? We only see the robots working in the controllable environments, such as the factory, warehouse, and inside the house. The intelligence of robots is basically based on complicated mathematics equations and functions, which we hope that they would help the robots to manage things well and complete their assigned tasks. On the other hand, we overlook the most important aspects that helps the animals, including humans, to survive in the world for very long time. In his talk, he introduces a new advent of robotic technologies concerning on the essence of living organisms, the possibility of using artificial emotion and hormone mechanisms for robots to adapt themselves in dynamic and full-of-interventions environment.",
+  "event": "2016/man-in-the-mirror",
+  "speaker": {
+    "name": "Pitiwut Teerakittikul",
+    "bio": "Pitiwut Teerakittikul is a lecturer at Institute of Field Robotics (FIBO), King’s Mongkut’s university of Technology Thonburi (KMUTT). As his strong desire to develop robots’ behaviour and intelligence, he currently researches the new characteristics of robots working in outdoor real-world environment, not only functioning in the factory."
+  },
+  "thumbnail": {
+    "src": "/src/assets/images/talks/2016/5.png",
+    "alt": "จะเกิดอะไรขึ้น ถ้าหุ่นยนต์มีฮอร์โมน cover"
+  },
+  "url": "https://www.youtube.com/watch?v=dsQj1DnXH_Q&list=PLTtccHhwDU8rrMggXvcC2-CZcndM_OmBd&index=10&t=93s",
+  "relatedTalks": []
+}
