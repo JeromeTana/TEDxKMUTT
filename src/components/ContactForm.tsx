@@ -11,12 +11,12 @@ export default function ContactForm() {
 
     const [status, setStatus] = useState("");
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
         e.stopPropagation();
         console.log(formData);
