@@ -23,7 +23,7 @@ const { url, event, title, description, speaker } = entry.data;
 const allTalks = await getCollection("watch");
 ---
 
-<Layout title="Watch · TEDxKMUTT">
+<Layout title={`${title} · Watch · TEDxKMUTT`}>
     <YouTube id={url} />
     <Container>
         <div class="flex flex-col md:flex-row gap-2 py-4">
@@ -35,7 +35,10 @@ const allTalks = await getCollection("watch");
                     <h1 class="font-bold text-2xl">{title}</h1>
                 </div>
                 <p class="leading-7">{description}</p>
-                <!-- <SocialButtons /> -->
+                <div class="!mt-10">
+                    <p class="font-bold mb-4">Share this talk to the world</p>
+                    <SocialButtons data={entry.data} />
+                </div>
             </div>
             <div class="w-full md:w-2/5 space-y-6 p-6 bg-[#1E1E1E] rounded-2xl">
                 <div class="space-y-2">
