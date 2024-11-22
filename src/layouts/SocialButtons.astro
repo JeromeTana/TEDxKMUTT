@@ -1,17 +1,50 @@
 ---
 import Button from "@/components/Button.astro";
+import { Icon } from "astro-icon/components";
 
-interface Props {
-    facebookUrl: string;
-    xUrl: string;
-    linkedinUrl: string;
-}
-
-const { facebookUrl, xUrl, linkedinUrl } = Astro.props;
+const { data } = Astro.props;
+const { title } = data;
 ---
 
-<div class="flex gap-2 space-x-2">
-    <Button variant="accent" href={facebookUrl}>Facebook Share</Button>
-    <Button variant="accent" href={xUrl}>X Share</Button>
-    <Button variant="accent" href={linkedinUrl}>LinkedIn Share</Button>
+<div class="flex gap-2">
+    <Button
+        variant="accent"
+        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+            Astro.url.toString()
+        )}`}
+        target="_blank"
+    >
+        <Icon name="mdi:facebook" />&nbsp;Facebook
+    </Button>
+    <Button
+        variant="accent"
+        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+            Astro.url.toString()
+        )}`}
+        target="_blank"
+    >
+        <Icon name="mdi:twitter" />&nbsp;Twitter
+    </Button>
+    <Button
+        variant="accent"
+        href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+            Astro.url.toString()
+        )}`}
+        target="_blank"
+    >
+        <Icon name="mdi:linkedin" />&nbsp;LinkedIn
+    </Button>
+    <Button
+        variant="accent"
+        href={`https://wa.me/?text=${encodeURIComponent(Astro.url.toString())}`}
+        target="_blank"
+    >
+        <Icon name="mdi:whatsapp" />&nbsp;WhatsApp
+    </Button>
+    <Button
+        variant="accent"
+        href={`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(Astro.url.toString())}`}
+    >
+        <Icon name="mdi:email" />&nbsp;Email
+    </Button>
 </div>
