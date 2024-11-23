@@ -11,15 +11,14 @@ if (slug === undefined) {
 }
 const entry = await getEntry("read", slug);
 
-const renderResult = await entry?.render();
-const Content = renderResult?.Content;
-
 if (entry === undefined) {
     return Astro.redirect("/404");
 }
 
+const { Content } = await entry?.render();
+
 const author = (await getCollection("author")).find(
-    (a) => a.id === entry.data.author.id,
+    (a) => a.id === entry.data.author.id
 )?.data as Author;
 
 async function getRelatedArticles() {
@@ -30,22 +29,25 @@ async function getRelatedArticles() {
             .map(async (e) => ({
                 item: e,
                 author: (await getCollection("author")).find(
-                    (a) => a.id === e.data.author.id,
+                    (a) => a.id === e.data.author.id
                 )?.data as Author,
-            })),
+            }))
     );
 }
 ---
 
 <Layout title="Read · TEDxKMUTT">
-    <main class="mx-auto max-w-lg lg:max-w-4xl pt-8">
+    <main class="mx-auto max-w-lg lg:max-w-4xl pt-8 space-y-8">
         <img
+            transition:name={`${entry.slug}-thumbnail`}
             src={entry.data.thumbnail.src}
             alt={entry.data.thumbnail.alt}
-            class="object-cover rounded-xl w-full"
+            class="object-contain w-full max-h-[70vh] bg-[#161616] border border-[#333] rounded-xl"
         />
-        <h1 class="text-4xl font-bold mt-8">{entry.data.title}</h1>
-        <div class="flex items-center">
+        <h1 class="text-4xl font-bold" transition:name={`${entry.slug}-title`}>
+            {entry.data.title}
+        </h1>
+        <!-- <div class="flex items-center">
             {
                 entry.data.categories.map((category) => (
                     <span class="bg-[#46000C] mt-6 mb-2 text-red-600 rounded-full text-sm px-3 py-1 mr-2">
@@ -53,13 +55,11 @@ async function getRelatedArticles() {
                     </span>
                 ))
             }
+        </div> -->
+        <div class="content space-y-4">
+            <Content />
         </div>
-
-        <div class="pt-8">
-            {Content && <Content />}
-        </div>
-
-        <div class="flex items-center mt-8">
+        <div class="flex items-center">
             <img
                 src={author.avatar.src}
                 class="w-8 h-8 object-cover rounded-full mr-3"
@@ -84,10 +84,71 @@ async function getRelatedArticles() {
                     getRelatedArticles().then((relatedArticles) =>
                         relatedArticles.map(({ item, author }) => (
                             <BlogItem blog={item} author={author} />
-                        )),
+                        ))
                     )
                 }
             </div>
         </div>
     </main>
+    <style lang="scss" is:global>
+        .content {
+            h1 {
+                font-size: 2.25rem;
+                font-weight: 700;
+            }
+            h2 {
+                font-size: 1.875rem;
+                font-weight: 700;
+            }
+            h3 {
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+            h4 {
+                font-size: 1.25rem;
+                font-weight: 700;
+            }
+            h5 {
+                font-size: 1rem;
+                font-weight: 700;
+            }
+            h6 {
+                font-size: 0.875rem;
+                font-weight: 700;
+            }
+            a {
+                color: #eb0028;
+                text-decoration: underline;
+            }
+            ul {
+                list-style: disc;
+                list-style-position: inside;
+            }
+            ol {
+                list-style: decimal;
+                list-style-position: inside;
+                p {
+                    display: inline-flex;
+                }
+            }
+            blockquote {
+                border-left: 4px solid #eb0028;
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+            pre {
+                background-color: #2c2c2c;
+                color: #ffffff;
+                padding: 1rem;
+                border-radius: 0.5rem;
+                overflow-x: auto;
+            }
+            code {
+                background-color: #24292c;
+                color: #ffffff;
+                padding: 0.25rem 0.5rem;
+                border-radius: 0.25rem;
+            }
+        }
+    </style>
 </Layout>
