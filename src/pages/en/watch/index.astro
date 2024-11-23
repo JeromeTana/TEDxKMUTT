@@ -21,10 +21,9 @@ const event = allEvents[0].data as Event;
             cover={cover}
         />
 
-        <div class="relative">
             <Container>
                 <div class="max-w-screen-lg m-auto">
-                    <div class="space-y-3 my-8 md:w-1/2">
+                    <div class="space-y-3 mb-10 my-8 md:w-3/4">
                         <p class="text-sm text-primary-500 font-bold">
                             {new Date(event.date).getFullYear()}
                         </p>
@@ -38,6 +37,5 @@ const event = allEvents[0].data as Event;
                     </div>
                 </div>
             </Container>
-        </div>
     </main>
 </Layout>
