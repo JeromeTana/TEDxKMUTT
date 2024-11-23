@@ -11,29 +11,39 @@ if (slug === undefined) {
 }
 const entry = await getEntry("read", slug);
 
-const renderResult = await entry?.render().Content;
+const renderResult = await entry?.render();
 const Content = renderResult?.Content;
 
 if (entry === undefined) {
     return Astro.redirect("/404");
 }
 
-const author = (await getCollection("author")).find(a => a.id === entry.data.author.id)?.data as Author;
+const author = (await getCollection("author")).find(
+    (a) => a.id === entry.data.author.id,
+)?.data as Author;
 
 async function getRelatedArticles() {
     const allEntries = await getCollection("read");
-        return Promise.all(allEntries.filter((e) => e.id !== entry?.id).map(async (e) => ({
-            item: e,
-            author: (await getCollection("author")).find(a => a.id === e.data.author.id)?.data as Author,
-        })));
+    return Promise.all(
+        allEntries
+            .filter((e) => e.id !== entry?.id)
+            .map(async (e) => ({
+                item: e,
+                author: (await getCollection("author")).find(
+                    (a) => a.id === e.data.author.id,
+                )?.data as Author,
+            })),
+    );
 }
-
-
 ---
-<Layout title="Read · TEDxKMUTT">
 
+<Layout title="Read · TEDxKMUTT">
     <main class="mx-auto max-w-lg lg:max-w-4xl pt-8">
-        <img src={entry.data.thumbnail.src} alt={entry.data.thumbnail.alt} class="object-cover rounded-xl w-full">
+        <img
+            src={entry.data.thumbnail.src}
+            alt={entry.data.thumbnail.alt}
+            class="object-cover rounded-xl w-full"
+        />
         <h1 class="text-4xl font-bold mt-8">{entry.data.title}</h1>
         <div class="flex items-center">
             {
@@ -44,8 +54,6 @@ async function getRelatedArticles() {
                 ))
             }
         </div>
-
-        
 
         <div class="pt-8">
             {Content && <Content />}
@@ -66,27 +74,20 @@ async function getRelatedArticles() {
         </div>
 
         <div class="mt-12">
-            <SocialButtons facebookUrl="" 
-            xUrl=""
-            linkedinUrl=""/>
-            </div>
+            <SocialButtons facebookUrl="" xUrl="" linkedinUrl="" />
+        </div>
 
         <div class="mt-16">
             <h1 class="text-3xl font-bold">อ่านบทความอื่น ๆ เพิ่มเติม</h1>
             <div class="grid mt-12 grid-cols-1 md:grid-cols-2 gap-8">
                 {
-                    getRelatedArticles().then(relatedArticles => 
+                    getRelatedArticles().then((relatedArticles) =>
                         relatedArticles.map(({ item, author }) => (
-                            <BlogItem
-                                blog={item}
-                                author={author}
-                            />
-                        ))
+                            <BlogItem blog={item} author={author} />
+                        )),
                     )
                 }
             </div>
         </div>
-        
     </main>
-
 </Layout>
