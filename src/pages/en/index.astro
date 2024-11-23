@@ -24,6 +24,7 @@ import TedxDecoreImg from "@/assets/images/wave-line-3.webp";
 import QuoteDecore from "@/assets/images/wave-line-4.webp";
 import TedxImg from "@/assets/images/Tedx.webp";
 import EngBuildImg from "@/assets/images/backgrounds/KMUTT_Eng_Building.webp";
+import EngBuildImg640 from "@/assets/images/backgrounds/KMUTT_Eng_Building_640.webp";
 import SwiperTalk from "@/components/SwiperTalk.astro";
 import SwiperEvent from "@/components/SwiperEvent.astro";
 import { Image } from "astro:assets";
@@ -50,6 +51,7 @@ const authorMap = Object.fromEntries(
             <Image
                 src={EngBuildImg}
                 alt="Engineering Building"
+                srcset={EngBuildImg + " 1920w," + EngBuildImg640 + " 640w"}
                 class="absolute top-0 left-0 w-full h-full inset-0 object-cover"
                 loading="eager"
             />
