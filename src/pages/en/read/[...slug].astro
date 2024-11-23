@@ -1,6 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { getEntry } from "astro:content";
+import { getEntry, getCollection } from "astro:content";
+import BlogItem from "@/components/BlogItem.astro";
+import SocialButtons from "@/layouts/SocialButtons.astro";
 
 const { slug } = Astro.params;
 
@@ -9,21 +11,83 @@ if (slug === undefined) {
 }
 const entry = await getEntry("read", slug);
 
+const renderResult = await entry?.render();
+const Content = renderResult?.Content;
+
 if (entry === undefined) {
     return Astro.redirect("/404");
 }
 
-const author = await getEntry(entry.data.author);
+const author = (await getCollection("author")).find(
+    (a) => a.id === entry.data.author.id,
+)?.data as Author;
 
-const { Content } = await entry.render();
-
----
-<Layout title="Read · TEDxKMUTT">
-<Content />
-{
-    author && (
-        <p>Written by: {author.data.name}</p>
-        <img src={author.data.avatar.src} alt={author.data.avatar.alt}>
-    )
+async function getRelatedArticles() {
+    const allEntries = await getCollection("read");
+    return Promise.all(
+        allEntries
+            .filter((e) => e.id !== entry?.id)
+            .map(async (e) => ({
+                item: e,
+                author: (await getCollection("author")).find(
+                    (a) => a.id === e.data.author.id,
+                )?.data as Author,
+            })),
+    );
 }
+---
+
+<Layout title="Read · TEDxKMUTT">
+    <main class="mx-auto max-w-lg lg:max-w-4xl pt-8">
+        <img
+            src={entry.data.thumbnail.src}
+            alt={entry.data.thumbnail.alt}
+            class="object-cover rounded-xl w-full"
+        />
+        <h1 class="text-4xl font-bold mt-8">{entry.data.title}</h1>
+        <div class="flex items-center">
+            {
+                entry.data.categories.map((category) => (
+                    <span class="bg-[#46000C] mt-6 mb-2 text-red-600 rounded-full text-sm px-3 py-1 mr-2">
+                        {category.toUpperCase()}
+                    </span>
+                ))
+            }
+        </div>
+
+        <div class="pt-8">
+            {Content && <Content />}
+        </div>
+
+        <div class="flex items-center mt-8">
+            <img
+                src={author.avatar.src}
+                class="w-8 h-8 object-cover rounded-full mr-3"
+                alt={`${author.name}'s avatar`}
+            />
+            <div class="text-sm">
+                <p>{author.name}</p>
+                <p class="text-xs text-gray-400">
+                    {entry.data.pubDate.toDateString()}
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-12">
+            <SocialButtons facebookUrl="" xUrl="" linkedinUrl="" />
+        </div>
+
+        <div class="mt-16">
+            <h1 class="text-3xl font-bold">อ่านบทความอื่น ๆ เพิ่มเติม</h1>
+            <div class="grid mt-12 grid-cols-1 md:grid-cols-2 gap-8">
+                {
+                    getRelatedArticles().then((relatedArticles) =>
+                        relatedArticles.map(({ item, author }) => (
+                            <BlogItem blog={item} author={author} />
+                        )),
+                    )
+                }
+            </div>
+        </div>
+    </main>
 </Layout>
