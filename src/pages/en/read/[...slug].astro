@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { getEntry, getCollection } from "astro:content";
 import BlogItem from "@/components/BlogItem.astro";
 import SocialButtons from "@/layouts/SocialButtons.astro";
+import Container from "@/components/Container.astro";
 
 const { slug } = Astro.params;
 
@@ -37,17 +38,22 @@ async function getRelatedArticles() {
 ---
 
 <Layout title="Read · TEDxKMUTT">
-    <main class="mx-auto max-w-lg lg:max-w-4xl pt-8 space-y-8">
-        <img
-            transition:name={`${entry.slug}-thumbnail`}
-            src={entry.data.thumbnail.src}
-            alt={entry.data.thumbnail.alt}
-            class="object-contain w-full max-h-[70vh] bg-[#161616] border border-[#333] rounded-xl"
-        />
-        <h1 class="text-4xl font-bold" transition:name={`${entry.slug}-title`}>
-            {entry.data.title}
-        </h1>
-        <!-- <div class="flex items-center">
+    <main>
+        <Container>
+            <div class="mx-auto max-w-screen-md pt-8 space-y-8 mb-12">
+                <img
+                    transition:name={`${entry.slug}-thumbnail`}
+                    src={entry.data.thumbnail.src}
+                    alt={entry.data.thumbnail.alt}
+                    class="object-contain w-full max-h-[70vh] bg-[#161616] border border-[#333] rounded-xl"
+                />
+                <h1
+                    class="text-4xl font-bold"
+                    transition:name={`${entry.slug}-title`}
+                >
+                    {entry.data.title}
+                </h1>
+                <!-- <div class="flex items-center">
             {
                 entry.data.categories.map((category) => (
                     <span class="bg-[#46000C] mt-6 mb-2 text-red-600 rounded-full text-sm px-3 py-1 mr-2">
@@ -55,41 +61,45 @@ async function getRelatedArticles() {
                     </span>
                 ))
             }
-        </div> -->
-        <div class="content space-y-4">
-            <Content />
-        </div>
-        <div class="flex items-center">
-            <img
-                src={author.avatar.src}
-                class="w-8 h-8 object-cover rounded-full mr-3"
-                alt={`${author.name}'s avatar`}
-            />
-            <div class="text-sm">
-                <p>{author.name}</p>
-                <p class="text-xs text-gray-400">
-                    {entry.data.pubDate.toDateString()}
-                </p>
-            </div>
-        </div>
+            </div> -->
+                <div class="content space-y-4">
+                    <Content />
+                </div>
+                <div class="flex items-center">
+                    <img
+                        src={author.avatar.src}
+                        class="w-8 h-8 object-cover rounded-full mr-3"
+                        alt={`${author.name}'s avatar`}
+                    />
+                    <div class="text-sm">
+                        <p>{author.name}</p>
+                        <p class="text-xs text-gray-400">
+                            {entry.data.pubDate.toDateString()}
+                        </p>
+                    </div>
+                </div>
 
-        <div class="mt-12">
-            <SocialButtons title={entry.data.title} />
-        </div>
-
-        <div class="mt-16">
-            <h1 class="text-3xl font-bold">อ่านบทความอื่น ๆ เพิ่มเติม</h1>
-            <div class="grid mt-12 grid-cols-1 md:grid-cols-2 gap-8">
-                {
-                    getRelatedArticles().then((relatedArticles) =>
-                        relatedArticles.map(({ item, author }) => (
-                            <BlogItem blog={item} author={author} />
-                        ))
-                    )
-                }
+                <div class="mt-12">
+                    <SocialButtons title={entry.data.title} />
+                </div>
             </div>
-        </div>
+            <div>
+                <h1 class="text-3xl font-bold">Continue reading</h1>
+                <div
+                    class="grid mt-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+                >
+                    {
+                        getRelatedArticles().then((relatedArticles) =>
+                            relatedArticles.map(({ item, author }) => (
+                                <BlogItem blog={item} author={author} />
+                            ))
+                        )
+                    }
+                </div>
+            </div>
+        </Container>
     </main>
+
     <style lang="scss" is:global>
         .content {
             h1 {

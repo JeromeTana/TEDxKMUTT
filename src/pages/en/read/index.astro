@@ -6,6 +6,7 @@ import Banner from "@/components/Banner";
 import Button from "@/components/Button.astro";
 import BlogItem from "@/components/BlogItem.astro";
 import cover from "@/assets/images/backgrounds/KMUTT_Eng_Building.webp";
+import Container from "@/components/Container.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const allReadings = await getCollection("read");
@@ -28,8 +29,8 @@ const categories = [
             description="Delve deeper into TEDxKMUTT talks with expert analyses, speaker interviews, and explorations of how these ideas are shaping our future"
             cover={cover}
         />
-        <div class="max-w-screen-xl m-auto">
-            <div class="flex flex-wrap gap-2 mb-4">
+        <Container>
+            <!-- <div class="flex flex-wrap gap-2 mb-4">
                 {
                     categories.map((category) => (
                         <Button
@@ -40,8 +41,8 @@ const categories = [
                         </Button>
                     ))
                 }
-            </div>
-            <div class="mt-4 grid grid-cols-1 lg:grid-cols-3">
+            </div> -->
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {
                     allReadings.map((reading) => {
                         const author = authorMap[reading.data.author.id];
@@ -49,6 +50,6 @@ const categories = [
                     })
                 }
             </div>
-        </div>
+        </Container>
     </main>
 </Layout>
