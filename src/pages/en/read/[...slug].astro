@@ -1,5 +1,4 @@
 ---
-import { flattenMarkdown } from "@/i18n/utils";
 import Layout from "@/layouts/Layout.astro";
 import { getEntry, getCollection } from "astro:content";
 import BlogItem from "@/components/BlogItem.astro";
@@ -11,9 +10,8 @@ if (slug === undefined) {
     throw new Error("Slug is required");
 }
 const entry = await getEntry("read", slug);
-
-const renderResult = await entry?.render();
-const Content = renderResult?.Content;
+const renderResult = await entry.render();
+const Content = renderResult.Content;
 
 if (entry === undefined) {
     return Astro.redirect("/404");
