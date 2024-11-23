@@ -1,16 +1,21 @@
 ---
 import { flattenMarkdown } from "@/i18n/utils";
 import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/Container.astro";
 import { getEntry, getCollection } from "astro:content";
 import BlogItem from "@/components/BlogItem.astro";
 import SocialButtons from "@/layouts/SocialButtons.astro";
 
-const { slug } = Astro.params ;
+const { slug } = Astro.params;
 
 if (slug === undefined) {
     throw new Error("Slug is required");
 }
 const entry = await getEntry("read", slug);
+
+const renderResult = await entry?.render();
+const Content = renderResult?.Content;
+const headings = renderResult?.headings;
 
 if (entry === undefined) {
     return Astro.redirect("/404");
@@ -30,7 +35,7 @@ async function getRelatedArticles() {
 ---
 <Layout title="Read · TEDxKMUTT">
 
-    <main class="mx-auto max-w-lg lg:max-w-4xl pt-8">
+    <Container>
         <img src={entry.data.thumbnail.src} alt={entry.data.thumbnail.alt} class="object-cover rounded-xl w-full">
         <h1 class="text-4xl font-bold mt-8">{entry.data.title}</h1>
         <div class="flex items-center">
@@ -43,7 +48,11 @@ async function getRelatedArticles() {
             }
         </div>
 
-        <div class="pt-8">{flattenMarkdown(entry.body)}</div>
+        
+
+        <div class="pt-8">
+            {Content && <Content />}
+        </div>
 
         <div class="flex items-center mt-8">
             <img
