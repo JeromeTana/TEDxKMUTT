@@ -1,14 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/Button.astro";
-import cover from "@/assets/images/wave-line-4.png";
+import cover from "@/assets/images/wave-line-4.webp";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="404 · TEDxKMUTT">
   <main>
     <div class="relative py-40 rounded-2xl md:rounded-3xl overflow-clip">
-      <img
-        src={cover.src}
+      <Image
+        src={cover}
+        alt={"404 Page Not Found"}
         class="absolute top-0 left-0 w-full h-full object-cover"
       />
 
