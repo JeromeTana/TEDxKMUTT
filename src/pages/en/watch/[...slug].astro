@@ -37,7 +37,7 @@ const allTalks = await getCollection("watch");
                 <p class="leading-7">{description}</p>
                 <div class="!mt-10">
                     <p class="font-bold mb-4">Share this talk to the world</p>
-                    <SocialButtons data={entry.data} />
+                    <SocialButtons title={entry.data.title} />
                 </div>
             </div>
             <div class="w-full md:w-2/5 space-y-6 p-6 bg-[#1E1E1E] rounded-2xl">
