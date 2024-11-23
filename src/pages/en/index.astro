@@ -4,7 +4,6 @@ import { Icon } from "astro-icon/components";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 import Button from "@/components/Button.astro";
-import EventCard from "@/components/EventCard.astro";
 import ContactForm from "@/components/ContactForm.astro";
 import BlogItem from "@/components/BlogItem.astro";
 import VisionCard from "@/components/VisionCard.astro";
@@ -27,6 +26,7 @@ import TedxImg from "@/assets/images/Tedx.png";
 import EngBuildImg from "@/assets/images/backgrounds/KMUTT_Eng_Building.png";
 import SwiperTalk from "@/components/SwiperTalk.astro";
 import SwiperEvent from "@/components/SwiperEvent.astro";
+import { Image } from "astro:assets";
 
 const allEvents = await getCollection("event");
 const allTalks = await getCollection("watch");
@@ -47,8 +47,8 @@ const authorMap = Object.fromEntries(
         <div
             class="relative bg-gray-400 flex justify-center items-center h-[60vh] m-2 p-8 rounded-3xl overflow-clip"
         >
-            <img
-                src={EngBuildImg.src}
+            <Image
+                src={EngBuildImg}
                 alt="Engineering Building"
                 class="absolute top-0 left-0 w-full h-full inset-0 object-cover"
             />
@@ -101,8 +101,8 @@ const authorMap = Object.fromEntries(
             class="relative !mt-16 !mb-32 md:!mt-48 md:!mb-96 py-32 text-center"
         >
             <div class="relative max-w-screen-lg m-auto">
-                <img
-                    src={QuoteL.src}
+                <Image
+                    src={QuoteL}
                     data-aos="fade-up"
                     alt="Quote_L"
                     class="absolute bottom-14 md:bottom-16 left-0 ml-2 w-12 md:w-24"
@@ -115,15 +115,15 @@ const authorMap = Object.fromEntries(
                 >
                     Ideas worth spreading
                 </p>
-                <img
-                    src={QuoteR.src}
+                <Image
+                    src={QuoteR}
                     data-aos="fade-up"
                     alt="Quote_R"
                     class="absolute top-16 right-0 mr-2 w-12 md:w-24"
                 />
             </div>
-            <img
-                src={QuoteDecore.src}
+            <Image
+                src={QuoteDecore}
                 alt=""
                 class="absolute top-1/2 -translate-y-2/3 md:-translate-y-1/3 left-1/2 md:left-0 max-w-screen-2xl md:max-w-full -translate-x-1/2 md:translate-x-0 md:w-full -z-10"
             />
@@ -135,8 +135,8 @@ const authorMap = Object.fromEntries(
                 data-aos-duration="1000"
                 class="flex flex-col md:flex-row gap-8"
             >
-                <img
-                    src={Preparation.src}
+                <Image
+                    src={Preparation}
                     alt="TEDx Preparation"
                     class="md:w-1/2 aspect-video rounded-xl object-cover"
                 />
@@ -197,15 +197,15 @@ const authorMap = Object.fromEntries(
                             <Icon name="mdi:open-in-new" />
                         </Button>
                     </Section>
-                    <img
-                        src={TedxImg.src}
+                    <Image
+                        src={TedxImg}
                         alt="TEDx"
                         class="aspect-video md:aspect-auto md:w-1/2 object-cover border border-gray-500 rounded-2xl duration-200 shadow-[0_0_2rem_0_rgba(0,0,0,0.3)] hover:shadow-primary-600"
                     />
                 </div>
             </Container>
-            <img
-                src={TedxDecoreImg.src}
+            <Image
+                src={TedxDecoreImg}
                 alt=""
                 class="absolute top-0 -translate-y-2/3 md:w-full -z-10 left-1/2 md:left-0 -translate-x-1/2 max-w-screen-2xl md:max-w-full md:translate-x-0"
             />
@@ -224,8 +224,8 @@ const authorMap = Object.fromEntries(
                 </Section>
                 <SwiperEvent allEvents={allEvents} />
             </Container>
-            <img
-                src={EventDecoreImg.src}
+            <Image
+                src={EventDecoreImg}
                 alt=""
                 class="absolute bottom-40 md:bottom-0 translate-y-1/2 md:w-full -z-10 left-1/2 md:left-0 -translate-x-1/2 max-w-screen-2xl md:max-w-full md:translate-x-0"
             />
@@ -287,8 +287,8 @@ const authorMap = Object.fromEntries(
                     >
                 </div>
             </Container>
-            <img
-                src={BlogDecoreImg.src}
+            <Image
+                src={BlogDecoreImg}
                 alt=""
                 class="absolute top-0 -translate-y-1/4 md:w-full -z-10 left-1/2 md:left-0 -translate-x-1/2 max-w-screen-2xl md:max-w-full md:translate-x-0"
             />
