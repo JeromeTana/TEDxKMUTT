@@ -25,8 +25,20 @@ const lang = getLangFromUrl(url);
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
         <ViewTransitions />
-        <style>
+        <style is:global>
             @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sen:wght@400..800&display=swap");
+
+            * {
+                font-family: "Inter", sans-serif;
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: "Sen", sans-serif;
+            }
         </style>
     </head>
 
