@@ -1,7 +1,6 @@
 ---
 import { flattenMarkdown } from "@/i18n/utils";
 import Layout from "@/layouts/Layout.astro";
-import Container from "@/components/Container.astro";
 import { getEntry, getCollection } from "astro:content";
 import BlogItem from "@/components/BlogItem.astro";
 import SocialButtons from "@/layouts/SocialButtons.astro";
@@ -15,7 +14,6 @@ const entry = await getEntry("read", slug);
 
 const renderResult = await entry?.render();
 const Content = renderResult?.Content;
-const headings = renderResult?.headings;
 
 if (entry === undefined) {
     return Astro.redirect("/404");
