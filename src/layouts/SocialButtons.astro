@@ -2,8 +2,15 @@
 import Button from "@/components/Button.astro";
 import { Icon } from "astro-icon/components";
 
-const { data } = Astro.props;
-const { title } = data;
+interface Props {
+    title?: string;
+}
+
+// set default values of title
+
+const { title = "Check out this article" } = Astro.props;
+
+// ---
 ---
 
 <div class="flex gap-2 overflow-auto">
