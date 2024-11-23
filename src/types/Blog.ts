@@ -1,4 +1,5 @@
 interface Blog {
+    slug: string;
     data: {
         thumbnail: {
             src: string;
