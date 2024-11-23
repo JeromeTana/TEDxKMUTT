@@ -4,7 +4,20 @@ import Button from "./Button.astro";
 import { Image } from "astro:assets";
 ---
 
-<div class="p-2">
+<div class="relative p-2">
+    <marquee
+        scrollamount="10"
+        class="text-stroke absolute top-0 -translate-y-20 block whitespace-nowrap text-transparent text-9xl font-serif italic"
+    >
+        KING'S MONGKUT'S UNIVERSITY OF TECHNOLOGY THONBURI
+    </marquee>
+    <marquee
+        scrollamount="10"
+        direction="right"
+        class="text-stroke absolute bottom-0 translate-y-12 block whitespace-nowrap text-transparent text-9xl font-serif italic"
+    >
+        KING'S MONGKUT'S UNIVERSITY OF TECHNOLOGY THONBURI
+    </marquee>
     <div
         class="relative px-4 py-12 lg:p-12 rounded-2xl md:rounded-3xl overflow-clip"
     >
