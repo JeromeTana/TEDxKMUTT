@@ -22,7 +22,6 @@ const event = allEvents[0].data as Event;
         />
 
         <Container>
-            <div class="max-w-screen-lg m-auto">
                 <div class="space-y-3 mb-10 my-8 md:w-3/4">
                     <p class="text-sm text-primary-500 font-bold">
                         {new Date(event.date).getFullYear()}
@@ -35,7 +34,6 @@ const event = allEvents[0].data as Event;
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {allWatching.map((watch) => <TalkCard talk={watch} />)}
                 </div>
-            </div>
         </Container>
     </main>
 </Layout>
