@@ -6,7 +6,7 @@ categories:
   - "blog"
 author: jerome-tana
 thumbnail: {
-  src: "https://www.shutterstock.com/image-vector/soft-power-banner-web-icon-260nw-1381866185.jpg",
+  src: "https://thaipublica.org/wp-content/uploads/2022/08/Thaipublica_Soft-Power-02-scaled.jpg",
   alt: "Soft Power"
 }
 
