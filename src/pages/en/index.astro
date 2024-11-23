@@ -111,7 +111,7 @@ const authorMap = Object.fromEntries(
                     data-aos="fade-up"
                     data-aos-delay="200"
                     data-aos-duration="700"
-                    class="text-4xl md:text-6xl font-bold"
+                    class="text-4xl md:text-6xl font-serif italic"
                 >
                     Ideas worth spreading
                 </p>
@@ -144,9 +144,9 @@ const authorMap = Object.fromEntries(
                     tag={t("home.about.tag")}
                     description={t("home.about.description")}
                 >
-                    <div slot="headline">
+                    <h2 slot="headline">
                         Ideas in <span class="c-underline">Action</span> at KMUTT
-                    </div>
+                    </h2>
                     <Button href={`/${lang}/about`}>
                         {t("home.about.more")}
                     </Button>
@@ -186,9 +186,9 @@ const authorMap = Object.fromEntries(
                         tag={t("home.tedx.tag")}
                         description={t("home.tedx.description")}
                     >
-                        <div slot="headline">
+                        <h2 slot="headline">
                             What is <span class="c-underline">TEDx?</span>
-                        </div>
+                        </h2>
                         <Button
                             href="https://www.ted.com/about/programs-initiatives/tedx-program"
                             target="_blank"
@@ -218,9 +218,9 @@ const authorMap = Object.fromEntries(
                     description={t("home.events.description")}
                     style="md:text-center mb-12"
                 >
-                    <div slot="headline">
+                    <h2 slot="headline">
                         A <span class="c-underline">Legacy</span> of Inspiration
-                    </div>
+                    </h2>
                 </Section>
                 <SwiperEvent allEvents={allEvents} />
             </Container>
@@ -237,9 +237,9 @@ const authorMap = Object.fromEntries(
                     description={t("home.talks.description")}
                     style="md:text-center mb-12"
                 >
-                    <div slot="headline">
+                    <h2 slot="headline">
                         Ideas That <span class="c-underline">Resonate</span>
-                    </div>
+                    </h2>
                 </Section>
                 <SwiperTalk allTalks={allTalks} />
                 <div class="flex justify-end mt-8">
@@ -256,11 +256,9 @@ const authorMap = Object.fromEntries(
                     description={t("home.read.description")}
                     style="md:text-center"
                 >
-                    <div slot="headline">
-                        <h2>
-                            <span class="c-underline">Beyond</span> the Stage
-                        </h2>
-                    </div>
+                    <h2 slot="headline">
+                        <span class="c-underline">Beyond</span> the Stage
+                    </h2>
                 </Section>
                 <div
                     data-aos="fade-up"
@@ -297,6 +295,9 @@ const authorMap = Object.fromEntries(
     </div>
 
     <style is:global>
+        * {
+            font-family: "Inter", sans-serif;
+        }
         .c-underline {
             position: relative;
         }
@@ -319,6 +320,14 @@ const authorMap = Object.fromEntries(
         .swiper-button-next::after,
         .swiper-button-prev::after {
             color: white;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Sen", sans-serif;
         }
     </style>
     <script>
