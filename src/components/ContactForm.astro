@@ -40,6 +40,7 @@ import { Image } from "astro:assets";
                         id="name"
                         name="name"
                         required
+                        disabled
                     />
                 </div>
                 <div class="mb-4">
@@ -50,6 +51,7 @@ import { Image } from "astro:assets";
                         id="email"
                         name="email"
                         required
+                        disabled
                     />
                 </div>
                 <div class="mb-4">
@@ -62,6 +64,7 @@ import { Image } from "astro:assets";
                         name="message"
                         rows="4"
                         required
+                        disabled
                         placeholder="Type your message..."></textarea>
                 </div>
                 <div class="mb-4">
@@ -70,6 +73,7 @@ import { Image } from "astro:assets";
                             type="checkbox"
                             class="form-checkbox text-red-600"
                             required
+                            disabled
                         />
                         <span class="ml-2"
                             >I accept the
@@ -80,7 +84,7 @@ import { Image } from "astro:assets";
                     </label>
                 </div>
                 <div class="mb-4 mt-8">
-                    <Button> Submit </Button>
+                    <Button disabled> Submit </Button>
                 </div>
             </form>
         </div>
