@@ -1,7 +1,7 @@
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import { useState } from "react";
 import LanguagePicker from "./LanguagePicker";
-import logo from "@//assets/images/logos/TEDxKMUTT_w.png";
+import logo from "/public/assets/images/logos/TEDxKMUTT_w.png";
 
 const Navbar = ({ url }: { url: URL }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
