@@ -12,7 +12,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
     site: "https://tedxkmutt.com",
     integrations: [tailwind(), icon(), react(), sitemap()],
-    output: "server",
+    output: "hybrid",
     adapter: cloudflare({
         platformProxy: {
             enabled: true,
