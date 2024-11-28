@@ -9,11 +9,6 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
     integrations: [tailwind(), icon(), react()],
-    output: "server",
-    adapter: cloudflare({
-        imageService: "passthrough"
-    }),
-    image: {
-        service: passthroughImageService(),
-    },
+    output: "static",
+    adapter: cloudflare(),
 });
