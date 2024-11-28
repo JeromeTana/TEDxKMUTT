@@ -10,7 +10,9 @@ import react from "@astrojs/react";
 export default defineConfig({
     integrations: [tailwind(), icon(), react()],
     output: "server",
-    adapter: cloudflare(),
+    adapter: cloudflare({
+        imageService: "passthrough"
+    }),
     image: {
         service: passthroughImageService(),
     },
